@@ -26,7 +26,7 @@ function Carroussel({ tabElementsEvenement }) {
                                 index === (selectedIndex + 2) % 3 ? "dessus" : "dessous"
                         }`}
                         style={{ backgroundImage: `url(${item.Image})` }}
-                        onClick={() => setSelectedIndex(index)} // ✅ Ajout du clic
+                        onClick={() => setSelectedIndex(index)}
                     >
                         <p>{item.Titre}</p>
                     </div>
