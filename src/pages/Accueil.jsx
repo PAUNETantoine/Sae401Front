@@ -1,4 +1,4 @@
-import "Accueil.css";
+import "/src/styles/pages/Accueil.css";
 
 
 function Accueil()
