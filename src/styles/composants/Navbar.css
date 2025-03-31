@@ -2,20 +2,51 @@
     display: flex;
     justify-content: center;
     gap: 20px;
-    padding: 10px;
-    background-color: #222;
+    padding: 20px;
+    background-color: #3B4EFF;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
 }
 
 .nav-btn {
-    background-color: #007bff;
-    color: white;
+    background-color: transparent;
+    color: #F1FFFA;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: monospace;
 }
 
 .nav-btn:hover {
-    background-color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Styles spécifiques pour le bouton image */
+.nav-btn-image {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s;
+    padding: 0; /* Empêche l'ajout de padding supplémentaire */
+    height: 40px;  /* Définit une hauteur fixe pour le bouton */
+    display: inline-flex; /* Alignement en ligne */
+    align-items: center;  /* Centrer verticalement l'image */
+    justify-content: center; /* Centrer horizontalement */
+}
+
+.nav-btn-image:hover {
+    transform: scale(1.1); /* Effet de zoom sur l'image au survol */
+}
+
+.image {
+    width: 200px;  /* Taille réduite de l'image */
+    height: auto;  /* Conserver les proportions de l'image */
+    margin-top: 80px;  /* Marge entre le haut et l'image */
 }
