@@ -16,39 +16,30 @@ function Carroussel({ tabElementsEvenement }) {
     };
 
     return (
-        <div id="carroussels">
-            <div className="carroussel-container">
-                {tabElementsEvenement.map((item, index) => (
-                    <div
-                        key={index}
-                        className={`ElementCarrousselEvent ${
-                            index === selectedIndex ? "selectionne" :
-                                index === (selectedIndex + 2) % 3 ? "dessus" : "dessous"
-                        }`}
-                        style={{ backgroundImage: `url(${item.Image})` }}
-                        onClick={() => setSelectedIndex(index)}
-                    >
-                        <p>{item.Titre}</p>
-                    </div>
-                ))}
-            </div>
+        <div className="carroussel-wrapper">
+            <h2 className="carroussel-title">Événements</h2>
+            <div id="carroussels">
+                <div className="carroussel-container">
+                    {tabElementsEvenement.map((item, index) => (
+                        <div
+                            key={index}
+                            className={`ElementCarrousselEvent ${
+                                index === selectedIndex ? "selectionne" :
+                                    index === (selectedIndex + 2) % 3 ? "dessus" : "dessous"
+                            }`}
+                            style={{ backgroundImage: `url(${item.Image})` }}
+                            onClick={() => setSelectedIndex(index)}
+                        >
+                            <p>{item.Titre}</p>
+                        </div>
+                    ))}
+                </div>
 
-            {/* Boutons de navigation haut/bas */}
-            <div className="boutons-navigation">
-                <Bouton
-                    className="btn-up"
-                    onClick={moveUp}
-                    image="/ressources/images/flecheHaut.png"
-                    widthBtn={80}
-                    heightBtn={80}
-                />
-                <Bouton
-                    className="btn-down"
-                    onClick={moveDown}
-                    image="/ressources/images/flecheBas.png"
-                    widthBtn={80}
-                    heightBtn={80}
-                />
+                {/* Boutons de navigation haut/bas */}
+                <div className="boutons-navigation">
+                    <Bouton className="btn-up" onClick={moveUp} image="/ressources/images/flecheHaut.png" widthBtn={80} heightBtn={80} />
+                    <Bouton className="btn-down" onClick={moveDown} image="/ressources/images/flecheBas.png" widthBtn={80} heightBtn={80} />
+                </div>
             </div>
         </div>
     );
