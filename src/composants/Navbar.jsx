@@ -1,7 +1,8 @@
 import "../styles/composants/Navbar.css";
 import Bouton from "./Bouton";
 
-function Navbar() {
+function Navbar()
+{
     return (
         <nav className="navbar">
             <Bouton texte="Événements" className="nav-btn" onClick={() => alert("Événements cliqué !")} />
