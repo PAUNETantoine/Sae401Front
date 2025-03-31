@@ -1,5 +1,5 @@
 import "../styles/pages/Accueil.css";
-import Navbar from "../composants/Navbar";
+import Header from "../composants/Header";
 import Carroussel from "../composants/Carroussel";
 import React from "react";
 
@@ -41,7 +41,7 @@ function Accueil()
 
     return (
         <div>
-            <Navbar></Navbar>
+            <Header></Header>
             <Carroussel tabElementsEvenement={tabElementsEvenement} tabElementsNewsletter={tabElementsNewsletter}></Carroussel>
         </div>
     );
