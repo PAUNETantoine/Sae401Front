@@ -16,4 +16,7 @@
     left: 0;
     width: 100%;
     z-index: 1000;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
 }

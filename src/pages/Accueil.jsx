@@ -17,6 +17,10 @@ function Accueil()
         {
             Titre: "Conference 20/03",
             Image : "/ressources/images/conférence.png"
+        },
+        {
+            Titre: "Bozoterie 25/80",
+            Image : "/ressources/images/comming-soon.jpg"
         }
     ])
 
@@ -42,7 +46,8 @@ function Accueil()
     return (
         <div>
             <Header></Header>
-            <Carroussel tabElementsEvenement={tabElementsEvenement} tabElementsNewsletter={tabElementsNewsletter}></Carroussel>
+            <Carroussel tabElementsEvenement={tabElementsEvenement} positionBtn={"droite"}></Carroussel>
+            <Carroussel tabElementsEvenement={tabElementsNewsletter} positionBtn={"gauche"}></Carroussel>
         </div>
     );
 }

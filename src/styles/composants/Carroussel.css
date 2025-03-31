@@ -1,9 +1,17 @@
-.carroussel-wrapper {
+.carroussel-wrapper-gauche {
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* Le carrousel reste aligné à gauche */
     position: relative;
     margin-left: 5%; /* Décalage à gauche */
+}
+
+.carroussel-wrapper-droite {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Le carrousel reste aligné à gauche */
+    position: relative;
+    margin-right: 5%; /* Décalage à droite */
 }
 
 .carroussel-title {
@@ -88,8 +96,12 @@
     backdrop-filter: blur(10px);
 }
 
+.cache {
+    display: none;
+}
+
 /* Style des boutons */
-.boutons-navigation {
+.boutons-navigation-droite{
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -97,6 +109,16 @@
     margin-top: -80px;
     margin-left: 150px; /* Distance de 50px à droite du carrousel */
 }
+
+.boutons-navigation-gauche{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    margin-top: -80px;
+    margin-right: 150px; /* Distance de 50px à gauche du carrousel */
+}
+
 
 .btn-up, .btn-down {
     background: none;
