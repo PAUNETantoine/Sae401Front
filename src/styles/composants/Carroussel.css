@@ -4,8 +4,8 @@
     align-items: center;
     height: 100vh; /* Remplir toute la hauteur de la fenêtre */
     width: 100%;
-    font-size : 30px;
-    margin : 50px;
+    margin: 50px;
+    position: relative;
 }
 
 .carroussel-container {
@@ -21,13 +21,26 @@
     height: 300px; /* Hauteur de l'élément */
     background-size: cover;
     background-position: center;
-    color: #fff;
+    color: white;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end; /* Aligne le texte en bas */
     text-align: center;
     border-radius: 20px;
+    overflow: hidden; /* Empêche le texte de dépasser */
 }
+
+/* Ajout du style pour le texte */
+.ElementCarrousselEvent p {
+    background: rgba(0, 0, 0, 0.3); /* Fond semi-transparent */
+    padding: 10px 15px;
+    margin: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    border-radius: 20px;
+}
+
 
 .selectionne {
     z-index: 3;
@@ -38,40 +51,49 @@
 
 .dessus {
     z-index: 2;
-    transform: translateY(-75px) translateX(25px); /* Déplacer l'élément de 50px vers le haut */
+    transform: translateY(-75px) translateX(25px); /* Déplacer l'élément vers le haut */
     width: 550px;
     height: 350px;
-    backdrop-filter : blur(120px);
+    background: rgba(255, 255, 255, 0.2); /* Couleur semi-transparente */
+    opacity: 0.7; /* 50% de transparence */
+    backdrop-filter: blur(10px); /* Applique un flou de 10px sur l’arrière-plan */
 }
 
 .dessous {
     z-index: 1;
-    transform: translateY(125px) translateX(25px); /* Déplacer l'élément de 50px vers le bas */
+    transform: translateY(125px) translateX(25px); /* Déplacer l'élément vers le bas */
     width: 550px;
     height: 350px;
-    backdrop-filter : blur(120px);
+    background: rgba(255, 255, 255, 0.2); /* Couleur semi-transparente */
+    opacity: 0.7; /* 50% de transparence */
+    backdrop-filter: blur(10px); /* Applique un flou de 10px sur l’arrière-plan */
 }
 
-.boutons-selection-container {
+/* Style des boutons de navigation (flèche haut et bas) */
+.boutons-navigation {
+    position: absolute;
+    left: 35%; /* Positionné à droite du carrousel */
+    top: 45%;
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    position: absolute;
-    top: 50%;
-    left: 35%;
-    transform: translateY(-50%);
-    margin: 20px;
+    gap: 20px;
 }
 
-.select-btn {
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
+.btn-up, .btn-down {
+    background: none;
     border: none;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: transform 0.2s ease;
 }
 
-.select-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+.btn-up img, .btn-down img {
+    width: 40px;
+    height: 40px;
+    opacity: 0.7;
+}
+
+.btn-up:hover img, .btn-down:hover img {
+    opacity: 1;
+    transform: scale(1.1);
 }

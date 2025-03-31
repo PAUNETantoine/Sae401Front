@@ -1,54 +1,54 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "../styles/composants/Carroussel.css";
 import Bouton from "./Bouton";
 
 function Carroussel({ tabElementsEvenement }) {
-    const [elements, setElements] = useState(tabElementsEvenement);
+    const [selectedIndex, setSelectedIndex] = useState(1); // Commence avec l'élément du milieu
 
-    const selectEvent = (index) => {
-        setElements((prevElements) => {
-            const selectedElement = prevElements[index];
-
-            // Création d'un nouvel ordre où l'élément sélectionné est en 2e position (index 1)
-            let newOrder = [...prevElements];
-
-            // On retire l'élément sélectionné
-            newOrder.splice(index, 1);
-
-            // On insère l'élément sélectionné à la position 1
-            newOrder.splice(1, 0, selectedElement);
-
-            return newOrder;
-        });
+    // Fonction pour aller à l'image du dessus
+    const moveUp = () => {
+        setSelectedIndex((prevIndex) => (prevIndex - 1 + 3) % 3);
     };
 
+    // Fonction pour aller à l'image du dessous
+    const moveDown = () => {
+        setSelectedIndex((prevIndex) => (prevIndex + 1) % 3);
+    };
 
     return (
         <div id="carroussels">
             <div className="carroussel-container">
-                {elements.map((item, index) => (
+                {tabElementsEvenement.map((item, index) => (
                     <div
                         key={index}
-                        className={`ElementCarrousselEvent ${index === 1 ? "selectionne" : index === 0 ? "dessus" : "dessous"}`}
+                        className={`ElementCarrousselEvent ${
+                            index === selectedIndex ? "selectionne" :
+                                index === (selectedIndex + 2) % 3 ? "dessus" : "dessous"
+                        }`}
                         style={{ backgroundImage: `url(${item.Image})` }}
+                        onClick={() => setSelectedIndex(index)} // ✅ Ajout du clic
                     >
                         <p>{item.Titre}</p>
                     </div>
                 ))}
             </div>
 
-            {/* Boutons de sélection à droite */}
-            <div className="boutons-selection-container">
-                {elements.map((item, index) => (
-                    <Bouton
-                        key={index}
-                        className=""
-                        onClick={() => selectEvent(index)}
-                        image={"/ressources/images/imgBtnPoint.png"}
-                        widthBtn={40}
-                        heightBtn={40}
-                    />
-                ))}
+            {/* Boutons de navigation haut/bas */}
+            <div className="boutons-navigation">
+                <Bouton
+                    className="btn-up"
+                    onClick={moveUp}
+                    image="/ressources/images/flecheHaut.png"
+                    widthBtn={80}
+                    heightBtn={80}
+                />
+                <Bouton
+                    className="btn-down"
+                    onClick={moveDown}
+                    image="/ressources/images/flecheBas.png"
+                    widthBtn={80}
+                    heightBtn={80}
+                />
             </div>
         </div>
     );
