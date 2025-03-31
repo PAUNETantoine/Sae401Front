@@ -1,4 +1,4 @@
-import "/src/styles/composants/Bouton.css";
+import "../styles/composants/Boutton.css";
 
 function Bouton({ texte, onClick, className = "" }) {
     return (

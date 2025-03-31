@@ -1,4 +1,4 @@
-import "/src/styles/composants/Navbar.css";
+import "../styles/composants/Navbar.css";
 import Bouton from "./Bouton";
 
 function Navbar() {

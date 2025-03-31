@@ -1,4 +1,5 @@
 import "../styles/pages/Accueil.css";
+import Navbar from "../composants/Navbar";
 
 
 function Accueil()
@@ -8,7 +9,7 @@ function Accueil()
     }
 
     return (
-        <div></div>
+        <Navbar></Navbar>
     );
 }
 
