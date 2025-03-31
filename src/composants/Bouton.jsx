@@ -1,10 +1,11 @@
 import "../styles/composants/Bouton.css";
 
-function Bouton({ texte, onClick, className = "" }) {
+function Bouton({ texte, onClick, className, image, widthBtn, heightBtn }) {
     return (
-        <button className={`bouton ${className}`} onClick={onClick}>
-            {texte}
-        </button>
+        <div className={`bouton ${className}`} onClick={onClick} height={heightBtn} width={widthBtn}>
+            {texte && <p>{texte}</p>}
+            {image && <img src={image} alt={texte} height={heightBtn} width={widthBtn} />}
+        </div>
     );
 }
 

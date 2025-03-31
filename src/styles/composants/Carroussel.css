@@ -26,6 +26,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    border-radius: 20px;
 }
 
 .selectionne {
@@ -40,6 +41,7 @@
     transform: translateY(-75px) translateX(25px); /* Déplacer l'élément de 50px vers le haut */
     width: 550px;
     height: 350px;
+    backdrop-filter : blur(120px);
 }
 
 .dessous {
@@ -47,12 +49,29 @@
     transform: translateY(125px) translateX(25px); /* Déplacer l'élément de 50px vers le bas */
     width: 550px;
     height: 350px;
+    backdrop-filter : blur(120px);
 }
 
-.boutons-container {
-    position: relative; /* Assure que les boutons restent sous le carrousel */
+.boutons-selection-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     gap: 10px;
-    margin-top: 20px; /* Espacement entre les images et les boutons */
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    transform: translateY(-50%);
+    margin: 20px;
+}
+
+.select-btn {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.select-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }

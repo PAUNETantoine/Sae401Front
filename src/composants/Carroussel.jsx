@@ -1,24 +1,27 @@
-import {useEffect, useState} from "react";
-import "../styles/composants/Carroussel.css"
+import { useEffect, useState } from "react";
+import "../styles/composants/Carroussel.css";
+import Bouton from "./Bouton";
 
 function Carroussel({ tabElementsEvenement }) {
     const [elements, setElements] = useState(tabElementsEvenement);
 
-    useEffect(() => {
-        // Pas besoin de modifier directement le DOM, on utilise React pour gérer les classes
-    }, [elements]); // Exécuté à chaque changement de `elements`
-
-    const nextEvent = () => {
+    const selectEvent = (index) => {
         setElements((prevElements) => {
-            return [prevElements[2], prevElements[0], prevElements[1]];
+            const selectedElement = prevElements[index];
+
+            // Création d'un nouvel ordre où l'élément sélectionné est en 2e position (index 1)
+            let newOrder = [...prevElements];
+
+            // On retire l'élément sélectionné
+            newOrder.splice(index, 1);
+
+            // On insère l'élément sélectionné à la position 1
+            newOrder.splice(1, 0, selectedElement);
+
+            return newOrder;
         });
     };
 
-    const prevEvent = () => {
-        setElements((prevElements) => {
-            return [prevElements[1], prevElements[2], prevElements[0]];
-        });
-    };
 
     return (
         <div id="carroussels">
@@ -34,10 +37,18 @@ function Carroussel({ tabElementsEvenement }) {
                 ))}
             </div>
 
-            {/* Conteneur des boutons déplacé ici */}
-            <div className="boutons-container">
-                <button className="prev" onClick={prevEvent}>&#60;</button>
-                <button className="next" onClick={nextEvent}>&#62;</button>
+            {/* Boutons de sélection à droite */}
+            <div className="boutons-selection-container">
+                {elements.map((item, index) => (
+                    <Bouton
+                        key={index}
+                        className=""
+                        onClick={() => selectEvent(index)}
+                        image={"/ressources/images/imgBtnPoint.png"}
+                        widthBtn={40}
+                        heightBtn={40}
+                    />
+                ))}
             </div>
         </div>
     );
