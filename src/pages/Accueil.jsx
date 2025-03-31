@@ -1,8 +1,12 @@
-import "/src/styles/pages/Accueil.css";
+import "../styles/pages/Accueil.css";
 
 
 function Accueil()
 {
+    const handleClickButton = () => {
+
+    }
+
     return (
         <div></div>
     );
