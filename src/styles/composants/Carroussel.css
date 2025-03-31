@@ -1,0 +1,58 @@
+#carroussels {
+    display: flex;
+    justify-content: flex-start; /* Aligner à gauche */
+    align-items: center;
+    height: 100vh; /* Remplir toute la hauteur de la fenêtre */
+    width: 100%;
+    font-size : 30px;
+    margin : 50px;
+}
+
+.carroussel-container {
+    position: relative;
+    width: 500px; /* Largeur de l'élément */
+    height: 500px; /* Hauteur totale de l'élément */
+}
+
+.ElementCarrousselEvent {
+    position: absolute;
+    transition: all 0.3s ease;
+    width: 500px; /* Largeur de l'élément */
+    height: 300px; /* Hauteur de l'élément */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.selectionne {
+    z-index: 3;
+    transform: translateY(0); /* Pas de décalage pour l'élément sélectionné */
+    width: 600px;
+    height: 400px;
+}
+
+.dessus {
+    z-index: 2;
+    transform: translateY(-75px) translateX(25px); /* Déplacer l'élément de 50px vers le haut */
+    width: 550px;
+    height: 350px;
+}
+
+.dessous {
+    z-index: 1;
+    transform: translateY(125px) translateX(25px); /* Déplacer l'élément de 50px vers le bas */
+    width: 550px;
+    height: 350px;
+}
+
+.boutons-container {
+    position: relative; /* Assure que les boutons restent sous le carrousel */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px; /* Espacement entre les images et les boutons */
+}
