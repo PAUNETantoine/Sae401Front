@@ -1,14 +1,31 @@
 import "../styles/composants/Bouton.css";
 
-function Bouton({ texte, onClick, className, image, widthBtn, heightBtn }) {
+function Bouton({ texte, onClick, className, image, btnWidth, btnHeight, imageWidth, imageHeight }) {
     return (
         <div
-            className={`bouton ${className}`}
+            className={className}
             onClick={onClick}
-            style={{ width: widthBtn, height: heightBtn }}
+            style={{
+                width: `${btnWidth}px`,
+                height: `${btnHeight}px`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer'
+            }}
         >
-            {texte && <p style={{ fontSize: "1em" }}>{texte}</p>}
-            {image && <img src={image} alt={texte} style={{ width: "100%", height: "100%" }} />}
+            {texte && <p style={{ fontSize: "1em", marginRight: image ? '10px' : '0' }}>{texte}</p>}
+
+            {image &&
+                <img
+                    src={image}
+                    alt={texte}
+                    style={{
+                        width: `${imageWidth}px` || 'auto',
+                        height: `${imageHeight}px` || 'auto',
+                    }}
+                />
+            }
         </div>
     );
 }
