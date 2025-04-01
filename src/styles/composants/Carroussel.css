@@ -1,17 +1,18 @@
+/* Modifier les wrappers des carrousels */
 .carroussel-wrapper-gauche {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Le carrousel reste aligné à gauche */
+    align-items: flex-start;
     position: relative;
-    margin-left: 5%; /* Décalage à gauche */
+    margin-left: -80px; /* Déplacement vers la gauche */
 }
 
 .carroussel-wrapper-droite {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Le carrousel reste aligné à gauche */
+    align-items: flex-end;
     position: relative;
-    margin-right: 5%; /* Décalage à droite */
+    margin-right: 80px; /* Ajustement pour équilibrer */
 }
 
 .carroussel-title {
@@ -25,14 +26,14 @@
     margin-top: 180px;
 }
 
-
 #carroussels {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Aligne le carrousel à gauche */
+    justify-content: space-between; /* Ajuste les carrousels */
     width: fit-content;
+    padding-left: 50px; /* Décalage global vers la gauche */
+    padding-right: 0px;
 }
-
 
 /* Conteneur principal du carrousel */
 .carroussel-container {
@@ -101,24 +102,23 @@
 }
 
 /* Style des boutons */
-.boutons-navigation-droite{
+.boutons-navigation-droite {
     display: flex;
     flex-direction: column;
     gap: 20px;
     position: relative;
     margin-top: -80px;
-    margin-left: 150px; /* Distance de 50px à droite du carrousel */
+    margin-left: 120px; /* Ajustement pour suivre le décalage */
 }
 
-.boutons-navigation-gauche{
+.boutons-navigation-gauche {
     display: flex;
     flex-direction: column;
     gap: 20px;
     position: relative;
     margin-top: -80px;
-    margin-right: 150px; /* Distance de 50px à gauche du carrousel */
+    margin-right: 40px; /* Ajustement pour alignement */
 }
-
 
 .btn-up, .btn-down {
     background: none;
@@ -136,4 +136,38 @@
 .btn-up:hover img, .btn-down:hover img {
     opacity: 1;
     transform: scale(1.1);
+}
+
+.full-text {
+    background: rgba(169, 169, 169, 1); /* Fond gris transparent */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    border: 10px solid black; /* Bordure noire épaisse */
+    border-radius: 15px; /* Bordure arrondie */
+}
+
+.full-text .txtCarousselContainer {
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.full-text p {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Vous pouvez aussi styliser .txtZoneCaroussel si nécessaire */
+.txtZoneCaroussel {
+    font-size: 15px !important;
+    color: white; /* Assurez-vous que le texte est lisible */
+    margin-top: 20px;
+    padding: 10px;
 }

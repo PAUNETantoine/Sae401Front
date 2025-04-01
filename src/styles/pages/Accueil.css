@@ -1,0 +1,9 @@
+/* Conteneur global des carrousels */
+.carroussel-container-global {
+    display: flex;
+    justify-content: space-between; /* Sépare les deux carrousels */
+    align-items: center; /* Centre verticalement */
+    width: 100%;
+    padding: 0 150px; /* Ajoute un décalage de 50px sur les côtés */
+    box-sizing: border-box;
+}

@@ -30,8 +30,8 @@ function Accueil()
             text : "Le bde à pour projet de rassembler les étudiants en informatique afin de leur donne l’oportunité de découvrir le reste de la promo tout en faisant des soirées amusantes avec de nombreuses activités."
         },
         {
-            Titre: "Poker 20/04",
-            text : ""
+            Titre: "Invitation à la soirée d'intégration !",
+            text : "Vous l'attendiez depuis longtemps ! Cette soirée d'intégration arrive enfin ! Vous pourrez vous retrouvez tous ensemble le 22 février 2025 pour fêter la nouvelle année tous ensemble ! Toutes les promos sont invitées."
         },
         {
             Titre: "Conference 20/03",
@@ -46,8 +46,10 @@ function Accueil()
     return (
         <div>
             <Header></Header>
-            <Carroussel tabElementsEvenement={tabElementsEvenement} positionBtn={"droite"}></Carroussel>
-            <Carroussel tabElementsEvenement={tabElementsNewsletter} positionBtn={"gauche"}></Carroussel>
+            <div className="carroussel-container-global">
+                <Carroussel tabElementsEvenement={tabElementsEvenement} positionBtn={"droite"} text="Événements" />
+                <Carroussel tabElementsEvenement={tabElementsNewsletter} positionBtn={"gauche"} text="Newsletter" />
+            </div>
         </div>
     );
 }
