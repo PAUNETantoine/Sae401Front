@@ -4,22 +4,25 @@ import Carroussel from "../composants/Carroussel";
 import Footer from "../composants/Footer";
 import React, { useState } from "react";
 import PopUp from "../composants/PopUp";
+import Bouton from "../composants/Bouton";
 
 function Accueil() {
     const [tabElementsEvenement, setTabElementsEvenement] = useState([
         {
-            Titre: "LaserGame",
+            Titre: "Laser Game",
             Image: "/ressources/images/laserGame.webp",
             date: "25/04",
             description: "Laser Game au Havre en équipes de 8.",
-            adresse : "8 rue du laser game le Havre 76600"
+            adresse : "8 rue du laser game le Havre 76600",
+            prix : "15€"
         },
         {
             Titre: "Poker",
             Image: "/ressources/images/poker.jpg",
             date: "20/04",
             description: "Parties de poker avec cash price pour les gagnants.",
-            adresse : "28 rue du poker le Havre 76660"
+            adresse : "28 rue du poker le Havre 76660",
+            prix : "2€"
 
         },
         {
@@ -27,14 +30,16 @@ function Accueil() {
             Image: "/ressources/images/conférence.png",
             date: "20/03",
             description: "Conference sur l'informatique et le développement durable.",
-            adresse: "12 rue de l'iut Caucriauville 76620"
+            adresse: "12 rue de l'iut Caucriauville 76620",
+            prix : "Gratuit"
         },
         {
             Titre: "Bozoterie",
             Image: "/ressources/images/comming-soon.jpg",
             date: "25/08",
             description: "On engage des clowns pour faire les singes en publique venez voir le spectacle",
-            adresse: "12 boulevard quoi feur 85468"
+            adresse: "12 boulevard quoi feur 85468",
+            prix : "Gratuit"
         },
     ]);
 
@@ -111,8 +116,11 @@ function Accueil() {
                             <p className={"title-text"}>{selectedElement.Titre}</p>
                             <p className={"description-event"}>{selectedElement.description}</p>
                             <p className={"infos-event"}>{"Date : " + selectedElement.date}</p>
-                            <p className={"infos-event-underline"}>{"Adresse : " + selectedElement.adresse}</p>
-
+                            <p className="infos-event">
+                                Adresse : <span className="underline">{selectedElement.adresse}</span>
+                            </p>
+                            <p className={"infos-event"}>{"Prix de l'inscription : " + selectedElement.prix}</p>
+                            <Bouton texte={"S'inscrire"} image={"/ressources/images/register.png"} className={"btn-action"}></Bouton>
                         </>
                     ) : (
                         <>

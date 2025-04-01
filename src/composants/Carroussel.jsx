@@ -65,7 +65,7 @@ function Carroussel({ tabElementsEvenement, positionBtn, text, setSelectedElemen
                                     {item.Image && <p className={"titreCaroussel-img"}>{item.Titre + " " + item.date}</p>}
                                     {item.text && (
                                         <>
-                                            <p className={"titreCaroussel"}>{item.Titre + " " + item.date}</p>
+                                            <p className={"titreCaroussel"}>{item.Titre + " " + (item.date ? item.date : "")}</p>
                                             <p className={"txtZoneCaroussel"}> {item.text.length > 250 ? item.text.substring(0, 250) + "..." : item.text}</p>
 
                                             <Bouton
