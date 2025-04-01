@@ -8,7 +8,7 @@ function FormulaireContact() {
     const [message, setMessage] = useState("");
 
     const handleSubmit = (e) => {
-        e.preventDefault(); // Empêcher le rechargement de la page
+        e.preventDefault();
         const templateParams = {
             sujet: sujet,
             message: message,
@@ -16,13 +16,12 @@ function FormulaireContact() {
             from_name: "Formulaire Contact",
         };
 
-        // Utilisation d'EmailJS pour envoyer l'email
         emailjs
             .send(
-                "service_m8xp49n",  // Remplacer par votre Service ID EmailJS
-                "template_ilonaor",  // Remplacer par votre Template ID EmailJS
+                "service_m8xp49n",  // Service ID EmailJS
+                "template_ilonaor",  // Template ID EmailJS
                 templateParams,
-                "msDmNCZkXw2kEZ3yi" // Remplacer par votre User ID EmailJS
+                "msDmNCZkXw2kEZ3yi" // User ID EmailJS
             )
             .then(
                 (response) => {

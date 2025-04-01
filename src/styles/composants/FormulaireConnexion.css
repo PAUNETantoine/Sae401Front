@@ -1,0 +1,74 @@
+.formulaire-connexion {
+    background-color: #D5C7BC;
+    width: 40%;
+    padding: 20px;
+    font-size: 24px;
+    font-family: monospace;
+    color: #454545;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.text-connexion {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-champ {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+}
+
+.btn-connexion {
+    background-color: #93B7BE;
+    border: 3px solid #3B4EFF;
+    padding: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+    align-self: center;
+}
+
+.btn-connexion:hover {
+    border-width: 6px; /* Augmente l'épaisseur de la bordure */
+    padding: 9px 21px; /* Réduit légèrement le padding pour compenser */
+}
+
+.inscription-link {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.inscription-link a {
+    color: #3B4EFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.inscription-link a:hover {
+    text-decoration: underline;
+}

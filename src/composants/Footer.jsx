@@ -1,13 +1,7 @@
 import "../styles/composants/Footer.css";
 import Bouton from "./Bouton";
 
-function Header()
-{
-
-    const handleImageClick = () => {
-        alert("Image cliquée !");
-    };
-
+function Footer() {
     return (
         <div className="footer">
             <p>BDE Informatique - Le Havre</p>
@@ -16,14 +10,14 @@ function Header()
                 <Bouton
                     image={"/ressources/images/logo_insta.png"}
                     className={"footer-btn-image"}
-                    onClick={() => alert("Insta cliquée !")}
+                    onClick={() => window.open("https://www.instagram.com/bdeinfo_lh/", "_blank")}
                     imageWidth={30}
                     imageHeight={30}
                 />
                 <Bouton
                     image={"/ressources/images/logo_discord.png"}
                     className={"footer-btn-image"}
-                    onClick={() => alert("discord cliqué !")}
+                    onClick={() => window.open("https://discord.gg/9akNvQ5a", "_blank")}
                     imageWidth={30}
                     imageHeight={30}
                 />
@@ -32,4 +26,4 @@ function Header()
     );
 }
 
-export default Header;
+export default Footer;

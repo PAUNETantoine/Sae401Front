@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-nav {
+.header nav {
     justify-content: space-between;
     display: flex;
     padding: 20px;
@@ -48,6 +48,6 @@ nav {
     transform: scale(1.1);
 }
 
-a {
+.header a {
     text-decoration: none;
 }

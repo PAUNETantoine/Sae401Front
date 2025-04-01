@@ -1,15 +1,13 @@
 import Header from "../composants/Header";
 import Footer from "../composants/Footer";
-import FormulaireContact from "../composants/FormulaireContact";
-import ListeMembresBDE from "../composants/ListeMembresBDE";
+import FormulaireConnexion from "../composants/FormulaireConnexion";
 
 function Contact()
 {
     return (
         <div>
             <Header></Header>
-            <ListeMembresBDE></ListeMembresBDE>
-            <FormulaireContact></FormulaireContact>
+            <FormulaireConnexion></FormulaireConnexion>
             <Footer></Footer>
         </div>
     );
