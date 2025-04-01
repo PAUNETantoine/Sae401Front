@@ -1,6 +1,7 @@
 import "../styles/pages/Accueil.css";
 import Header from "../composants/Header";
 import Carroussel from "../composants/Carroussel";
+import Footer from "../composants/Footer";
 import React from "react";
 
 function Accueil()
@@ -50,6 +51,7 @@ function Accueil()
                 <Carroussel tabElementsEvenement={tabElementsEvenement} positionBtn={"droite"} text="Événements" />
                 <Carroussel tabElementsEvenement={tabElementsNewsletter} positionBtn={"gauche"} text="Newsletter" />
             </div>
+            <Footer></Footer>
         </div>
     );
 }

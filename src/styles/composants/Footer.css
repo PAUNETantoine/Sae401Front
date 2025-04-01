@@ -1,0 +1,32 @@
+.footer {
+    background-color: #454545;
+    color: #F1FFFA;
+    padding: 10px;
+    font-size: 16px;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.footer-images {
+    position: absolute;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.footer-btn-image {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s;
+    height: auto;
+}

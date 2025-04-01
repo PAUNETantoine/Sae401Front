@@ -4,13 +4,13 @@
     box-sizing: border-box;
 }
 
-.navbar {
+nav {
     justify-content: space-between;
     display: flex;
     padding: 20px;
     background-color: #3B4EFF;
     height: 100px;
-
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -19,4 +19,31 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+.header-btn {
+    background-color: transparent;
+    color: #F1FFFA;
+    border: none;
+    cursor: pointer;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.header-btn:hover {
+    text-decoration: underline;
+}
+
+.header-btn-image {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s;
+    height: auto;
+    margin-top: 80px;
+}
+
+.header-btn-image:hover {
+    transform: scale(1.1);
 }
