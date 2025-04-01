@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Accueil from './pages/Accueil.jsx';
+import Contact from './pages/Contact.jsx';
 
 
 
