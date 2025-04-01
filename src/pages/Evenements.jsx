@@ -1,9 +1,11 @@
 import Header from "../composants/Header";
 import Footer from "../composants/Footer";
 import CaseEvent from "../composants/CaseEvent";
-import {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "../styles/pages/Evenements.css"
-import BoutonNotifications from "../composants/BoutonNotifications";
+import BoutonDropBox from "../composants/BoutonDropBox";
+import Bouton from "../composants/Bouton";
+import PopUp from "../composants/PopUp";
 
 function Evenements()
 {
@@ -82,12 +84,42 @@ function Evenements()
         },
     ]);
 
+    const [inscriptions, setInscriptions] = useState([]);
+
+    const [popUp, setPopUp] = React.useState(false);
+
+    const handleInscriptions = () => {
+        setPopUp(true);
+    }
+
+    const handleClosePopUp = () => {
+        setPopUp(false);
+    }
+
+    const ajouterInscription = (element) => {
+        setInscriptions(element);
+    }
+
+    useEffect(() => {
+        if(popUp) {
+            document.getElementById("popUpInscriptions").classList.remove("cache");
+        }else{
+            document.getElementById("popUpInscriptions").classList.add("cache");
+        }
+    },[popUp])
 
     return(
         <div>
             <Header></Header>
             <div className="boutons-container">
-                <BoutonNotifications></BoutonNotifications>
+                <BoutonDropBox titre={"Notifications"} texte1={"Activées"} texte2={"Désactivées"}></BoutonDropBox>
+                <Bouton onClick={handleInscriptions} texte={"Mes inscriptions"} image={"/ressources/images/registered.png"} imageHeight={50} imageWidth={50} width={200} height={70} className={"btn-inscriptions"}></Bouton>
+
+                <PopUp id={"popUpInscriptions"} className={popUp ? "popup-visible" : "cache"} setPopUp={handleClosePopUp}>
+                    <div className={"titre-popup-inscriptions"}>
+                        <span>Mes inscriptions</span>
+                    </div>
+                </PopUp>
             </div>
             <div className="case-event-container">
                 {tabElementsEvenement.map((element, index) => (

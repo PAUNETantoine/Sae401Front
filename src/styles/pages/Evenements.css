@@ -7,7 +7,22 @@
 }
 
 .boutons-container {
-    margin-top : 120px;
-    margin-left: 50px;
-    margin-bottom: 60px;
+    display: flex;
+    justify-content: space-between; /* Place les boutons aux extrémités */
+    align-items: center; /* Centre les boutons verticalement si nécessaire */
+    width: calc(100% - 300px); /* Ajuste la largeur sans déborder */
+    max-width: 100%; /* Empêche le débordement */
+    margin: 120px auto 60px auto; /* Centrage horizontal */
+    padding: 0 150px; /* Garde un espacement intérieur sans décaler */
+}
+
+
+.btn-inscriptions {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.cache {
+    display: none;
 }
