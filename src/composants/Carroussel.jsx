@@ -47,12 +47,25 @@ function Carroussel({ tabElementsEvenement, positionBtn, text }) {
                                 onClick={() => setSelectedIndex(index)}
                             >
                                 <div className="txtCarousselContainer">
-                                    <p>{item.Titre}</p>
-                                    {item.text && <p className="txtZoneCaroussel">{item.text}</p>}
-                                    <Bouton className={"btn-lireSuite"} onClick={ouvrirPopupText} texte={"Lire la suite"} widthBtn={320} heightBtn={40}></Bouton>
+                                    {item.Image && <p className={"titreCaroussel-img"}>{item.Titre}</p>}
+                                    {item.text && (
+                                        <>
+                                            <p className={"titreCaroussel"}>{item.Titre}</p>
+                                            <p className="txtZoneCaroussel">{item.text}</p>
+
+                                            <Bouton
+                                                className={"btn-lireSuite"}
+                                                onClick={ouvrirPopupText}
+                                                texte={"Lire la suite"}
+                                                widthBtn={320}
+                                                heightBtn={40}
+                                            />
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         );
+
                     })}
                 </div>
 

@@ -19,7 +19,7 @@
     position: relative;
     margin-left: 290px;
     transform: translateX(-50%);
-    font-size: 50px;
+    font-size: 30px;
     font-weight: bold;
     text-align: center;
     margin-bottom: 100px;
@@ -38,8 +38,8 @@
 /* Conteneur principal du carrousel */
 .carroussel-container {
     position: relative;
-    width: 500px;
-    height: 500px;
+    width: 450px;
+    height: 450px;
 }
 
 /* Style des éléments */
@@ -60,13 +60,13 @@
 }
 
 /* Style du texte */
-.ElementCarrousselEvent p {
+.titreCaroussel-img {
     background: rgba(0, 0, 0, 0.3);
     padding: 10px 15px;
     margin: 20px;
     width: 100%;
     text-align: center;
-    font-size: 40px;
+    font-size: 30px !important;
     border-radius: 20px;
 }
 
@@ -74,15 +74,15 @@
 {
     z-index: 3;
     transform: translateY(0);
-    width: 600px;
-    height: 400px;
+    width: 500px;
+    height: 350px;
 }
 
 .dessus {
     z-index: 2;
     transform: translateY(-75px) translateX(25px);
-    width: 550px;
-    height: 350px;
+    width: 450px;
+    height: 300px;
     background: rgba(255, 255, 255, 0.2);
     opacity: 0.7;
     backdrop-filter: blur(10px);
@@ -91,8 +91,8 @@
 .dessous {
     z-index: 1;
     transform: translateY(125px) translateX(25px);
-    width: 550px;
-    height: 350px;
+    width: 450px;
+    height: 300px;
     background: rgba(255, 255, 255, 0.2);
     opacity: 0.7;
     backdrop-filter: blur(10px);
@@ -109,7 +109,7 @@
     gap: 20px;
     position: relative;
     margin-top: -80px;
-    margin-left: 120px; /* Ajustement pour suivre le décalage */
+    margin-left: 110px; /* Ajustement pour suivre le décalage */
 }
 
 .boutons-navigation-gauche {
@@ -152,28 +152,44 @@
     border: 20px solid #D5C7BC;
 }
 
+.titreCaroussel {
+    font-size: 25px !important;
+}
+
 .full-text .txtCarousselContainer {
     text-align: left; /* Texte aligné à gauche */
-    font-size: 30px;
     margin-top: 0; /* Ajout d'un petit ajustement pour éviter l'espace en haut */
 }
 
 .full-text p {
     font-weight: bold;
-    margin: 0; /* Élimine les marges par défaut du paragraphe */
     background: none !important; /* Enlever le fond derrière le texte */
+    background: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding-bottom: 10px;
+    justify-content: center;
+    border-radius: 20px;
 }
 
 /* Vous pouvez aussi styliser .txtZoneCaroussel si nécessaire */
 .txtZoneCaroussel {
-    font-size: 22px !important;
+    font-size: 18px !important;
     font-weight: normal !important;
     color: white; /* Assurez-vous que le texte est lisible */
     margin-top: 10px; /* Espacement entre les paragraphes */
 }
 
+/* Conteneur du texte avec position relative */
+.txtCarousselContainer {
+    position: relative; /* Nécessaire pour le positionnement absolu du bouton */
+}
+
+/* Bouton "Lire la suite" positionné en bas à droite de son conteneur */
 .btn-lireSuite {
+    position: absolute;
+    bottom: -75px; /* Espace du bas du conteneur */
+    right: -75px; /* Espace du côté droit du conteneur */
     cursor: pointer;
-    align-content: flex-end;
     color: #3B4EFF;
+    font-size: 20px !important;
 }

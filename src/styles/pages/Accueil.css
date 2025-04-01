@@ -7,3 +7,7 @@
     padding: 0 150px; /* Ajoute un décalage de 50px sur les côtés */
     box-sizing: border-box;
 }
+
+.cache {
+    display: none;
+}
