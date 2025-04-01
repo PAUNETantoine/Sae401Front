@@ -84,7 +84,8 @@ function Evenements()
         },
     ]);
 
-    const [inscriptions, setInscriptions] = useState([]);
+    const [inscriptions, setInscriptions] = useState([tabElementsEvenement[0], tabElementsEvenement[2]]);
+    const [elementChoix, setElementChoix] = useState(null);
 
     const [popUp, setPopUp] = React.useState(false);
 
@@ -94,6 +95,21 @@ function Evenements()
 
     const handleClosePopUp = () => {
         setPopUp(false);
+    }
+
+
+    const [popUpEvent, setPopUpEvent] = React.useState(false);
+
+
+    const handleClosePopUpEvent = () => {
+        setPopUpEvent(false);
+    }
+
+
+    const handlePasserPopUpEvent = (element) => {
+        handleClosePopUp();
+        setElementChoix(element);
+        setPopUpEvent(true);
     }
 
     const ajouterInscription = (element) => {
@@ -106,11 +122,58 @@ function Evenements()
         }else{
             document.getElementById("popUpInscriptions").classList.add("cache");
         }
-    },[popUp])
+
+        if(popUpEvent)
+        {
+            if(document.getElementById("popUpEvent"))
+            {
+                document.getElementById("popUpEvent").classList.remove("cache");
+            }
+        }else{
+            if(document.getElementById("popUpEvent"))
+            {
+                document.getElementById("popUpEvent").classList.add("cache");
+            }        }
+    },[popUp, popUpEvent])
 
     return(
         <div>
             <Header></Header>
+            {popUpEvent && (
+                <PopUp id={"popUpEvent"} className={popUp ? "popup-visible" : "cache"} setPopUp={handleClosePopUpEvent}>
+                    {elementChoix.Image && (
+                        <img
+                            className={"popup-image"}
+                            src={elementChoix.Image}
+                            alt={elementChoix.Titre}
+                        />
+                    )}
+                    <p className={"title-text"}>{elementChoix.Titre}</p>
+                    <p className={"description-event"}>{elementChoix.description}</p>
+                    <p className={"infos-event"}>{"Date : " + elementChoix.date}</p>
+                    <p className="infos-event">
+                        Adresse : <span className="underline">{elementChoix.adresse}</span>
+                    </p>
+                    <p className={"infos-event"}>{"Prix de l'inscription : " + elementChoix.prix}</p>
+                    {elementChoix.note && (
+                        <>
+                            <p className={"infos-event"}>{"Note Moyenne : " + elementChoix.note}</p>
+                            {elementChoix.avis.map((element, index) => (
+                                <p className={"description-event"}>{element.auteur + " : " + element.note + "\n" + element.avis}</p>
+                            ))}
+                            <div className={"btn-popup"}>
+                                <Bouton texte={"Donner son avis"} image={"/ressources/images/star.png"} className={"btn-action"} btnWidth={270} btnHeight={60} imageHeight={40} imageWidth={40}></Bouton>
+                            </div>
+                        </>
+                    )}
+                    {!elementChoix.note && (
+                        <div className={"btn-popup"}>
+                            <Bouton texte={"S'inscrire"} image={"/ressources/images/register.png"} className={"btn-action"} btnWidth={200} btnHeight={60} imageHeight={40} imageWidth={40}></Bouton>
+                        </div>
+                    )}
+                </PopUp>
+            )}
+
             <div className="boutons-container">
                 <BoutonDropBox titre={"Notifications"} texte1={"Activées"} texte2={"Désactivées"}></BoutonDropBox>
                 <Bouton onClick={handleInscriptions} texte={"Mes inscriptions"} image={"/ressources/images/registered.png"} imageHeight={50} imageWidth={50} width={200} height={70} className={"btn-inscriptions"}></Bouton>
@@ -118,6 +181,21 @@ function Evenements()
                 <PopUp id={"popUpInscriptions"} className={popUp ? "popup-visible" : "cache"} setPopUp={handleClosePopUp}>
                     <div className={"titre-popup-inscriptions"}>
                         <span>Mes inscriptions</span>
+                        <img src={"/ressources/images/registered.png"} width={80} height={80} />
+                    </div>
+                    <div className={"zoneText-popup-inscriptions"}>
+                        {inscriptions.map((inscription, index) => (
+                            <div className={"inscription-container"} key={index}>
+                                <p>{"> " + inscription.Titre + " " + inscription.date + (inscription.note ? " (Passé(e))" : " (À venir)")}</p>
+                                {!inscription.note && (
+                                    <Bouton texte={"Annuler"} height={70} width={120} className={"btn-action"} onClick={handleClosePopUp} />
+                                )}
+                                {inscription.note && (
+                                    <Bouton texte={"Noter"} height={70} width={120} className={"btn-action"} onClick={() => handlePasserPopUpEvent(inscription)} />
+                                )}
+                            </div>
+                        ))}
+                        {!inscriptions[0] && <p>Aucune réservation</p>}
                     </div>
                 </PopUp>
             </div>

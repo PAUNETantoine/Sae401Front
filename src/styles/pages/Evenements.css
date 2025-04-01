@@ -26,3 +26,36 @@
 .cache {
     display: none;
 }
+
+.titre-popup-inscriptions {
+    display: flex; /* Aligne les éléments horizontalement */
+    align-items: center; /* Centre verticalement l'image et le texte */
+    gap: 15px; /* Espacement entre le texte et l'image */
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.zoneText-popup-inscriptions {
+    display: flex;
+    flex-direction: column; /* Aligne les éléments verticalement */
+    align-items: center; /* Centre horizontalement les éléments */
+    gap: 40px; /* Espacement entre les éléments */
+    margin-top: 50px;
+    font-size: 25px;
+    font-weight: bold;
+    justify-content: center; /* Centre verticalement si nécessaire */
+}
+
+.inscription-container {
+    display: flex;
+    align-items: center; /* Aligne verticalement le texte et le bouton */
+    gap: 20px; /* Espacement entre le texte et le bouton */
+}
+
+.cache {
+    display: none;
+}
