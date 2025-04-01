@@ -41,9 +41,6 @@ function Accueil()
     ])
 
 
-
-
-
     return (
         <div>
             <Header></Header>

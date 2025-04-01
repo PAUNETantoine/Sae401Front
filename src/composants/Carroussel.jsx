@@ -15,6 +15,10 @@ function Carroussel({ tabElementsEvenement, positionBtn, text }) {
         setSelectedIndex((prevIndex) => (prevIndex + 1) % tabElementsEvenement.length);
     };
 
+    const ouvrirPopupText = () => {
+
+    }
+
     return (
         <div className={positionBtn === "droite" ? "carroussel-wrapper-gauche" : "carroussel-wrapper-droite"}>
             <h2 className="carroussel-title">{text}</h2>
@@ -45,6 +49,7 @@ function Carroussel({ tabElementsEvenement, positionBtn, text }) {
                                 <div className="txtCarousselContainer">
                                     <p>{item.Titre}</p>
                                     {item.text && <p className="txtZoneCaroussel">{item.text}</p>}
+                                    <Bouton className={"btn-lireSuite"} onClick={ouvrirPopupText} texte={"Lire la suite"} widthBtn={320} heightBtn={40}></Bouton>
                                 </div>
                             </div>
                         );
