@@ -16,7 +16,8 @@ function Accueil() {
             adresse : "8 rue du laser game le Havre 76600",
             prix : "15€",
             inscrits : "10/25",
-            avis : ""
+            note : "",
+            adresseLien : "https://www.google.com/maps/place/Institut+universitaire+de+technologie+du+Havre/@49.5161141,0.1624614,17z/data=!4m14!1m7!3m6!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!2sInstitut+universitaire+de+technologie+du+Havre!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j!3m5!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoASAFQAw%3D%3D"
         },
         {
             Titre: "Poker",
@@ -26,7 +27,18 @@ function Accueil() {
             adresse : "28 rue du poker le Havre 76660",
             prix : "2€",
             inscrits : "8/12",
-            avis : "4.5 / 5"
+            note : "4.5 / 5",
+            avis : [
+                {
+                    auteur: "Marilou",
+                    avis : "Très bonne partie"
+                },
+                {
+                    auteur: "Antonin",
+                    avis : "c'était bien."
+                }
+            ],            adresseLien : "https://www.google.com/maps/place/Institut+universitaire+de+technologie+du+Havre/@49.5161141,0.1624614,17z/data=!4m14!1m7!3m6!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!2sInstitut+universitaire+de+technologie+du+Havre!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j!3m5!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoASAFQAw%3D%3D"
+
         },
         {
             Titre: "Conference",
@@ -36,7 +48,15 @@ function Accueil() {
             adresse: "12 rue de l'iut Caucriauville 76620",
             prix : "Gratuit",
             inscrits : "25",
-            avis : "3.9/5"
+            note : "3.9/5",
+            avis : [
+                {
+                    auteur: "Antoine",
+                    avis : "Vraiment pas ouf mais bon"
+                }
+            ],
+            adresseLien : "https://www.google.com/maps/place/Institut+universitaire+de+technologie+du+Havre/@49.5161141,0.1624614,17z/data=!4m14!1m7!3m6!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!2sInstitut+universitaire+de+technologie+du+Havre!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j!3m5!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoASAFQAw%3D%3D"
+
         },
         {
             Titre: "Bozoterie",
@@ -46,7 +66,9 @@ function Accueil() {
             adresse: "12 boulevard quoi feur 85468",
             prix : "Gratuit",
             inscrits : "42",
-            avis : ""
+            note : "",
+            adresseLien : "https://www.google.com/maps/place/Institut+universitaire+de+technologie+du+Havre/@49.5161141,0.1624614,17z/data=!4m14!1m7!3m6!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!2sInstitut+universitaire+de+technologie+du+Havre!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j!3m5!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoASAFQAw%3D%3D"
+
         },
     ]);
 

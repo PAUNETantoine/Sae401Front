@@ -1,7 +1,9 @@
 import Header from "../composants/Header";
 import Footer from "../composants/Footer";
-import CaseEvent from "../styles/composants/CaseEvent";
+import CaseEvent from "../composants/CaseEvent";
 import {useState} from "react";
+import "../styles/pages/Evenements.css"
+import BoutonNotifications from "../composants/BoutonNotifications";
 
 function Evenements()
 {
@@ -14,7 +16,9 @@ function Evenements()
             adresse : "8 rue du laser game le Havre 76600",
             prix : "15€",
             inscrits : "10/25",
-            avis : ""
+            note : "",
+            adresseLien : "https://www.google.com/maps/place/Institut+universitaire+de+technologie+du+Havre/@49.5161141,0.1624614,17z/data=!4m14!1m7!3m6!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!2sInstitut+universitaire+de+technologie+du+Havre!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j!3m5!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoASAFQAw%3D%3D"
+
         },
         {
             Titre: "Poker",
@@ -24,7 +28,21 @@ function Evenements()
             adresse : "28 rue du poker le Havre 76660",
             prix : "2€",
             inscrits : "8/12",
-            avis : "4.5 / 5"
+            note : "4.5 / 5",
+            avis : [
+                {
+                    auteur: "Antoine",
+                    avis : "Pas mal mais simplement ça mériterais d'être un peu plus grand",
+                    note : "3.5/5"
+                },
+                {
+                    auteur: "Antonin",
+                    avis : "c'était bien mais ça vaut pas son prix",
+                    note : "2.5/5"
+                }
+            ],
+            adresseLien : "https://www.google.com/maps/place/Institut+universitaire+de+technologie+du+Havre/@49.5161141,0.1624614,17z/data=!4m14!1m7!3m6!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!2sInstitut+universitaire+de+technologie+du+Havre!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j!3m5!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoASAFQAw%3D%3D"
+
         },
         {
             Titre: "Conference",
@@ -34,7 +52,21 @@ function Evenements()
             adresse: "12 rue de l'iut Caucriauville 76620",
             prix : "Gratuit",
             inscrits : "25",
-            avis : "3.9/5"
+            note : "3.9/5",
+            avis : [
+                {
+                    auteur: "Martin",
+                    avis : "aberrant",
+                    note : "4/5"
+                },
+                {
+                    auteur: "Kiki",
+                    avis : "c'était bien",
+                    note : "5/5"
+                }
+            ],
+            adresseLien : "https://www.google.com/maps/place/Institut+universitaire+de+technologie+du+Havre/@49.5161141,0.1624614,17z/data=!4m14!1m7!3m6!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!2sInstitut+universitaire+de+technologie+du+Havre!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j!3m5!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoASAFQAw%3D%3D"
+
         },
         {
             Titre: "Bozoterie",
@@ -44,7 +76,9 @@ function Evenements()
             adresse: "12 boulevard quoi feur 85468",
             prix : "Gratuit",
             inscrits : "42",
-            avis : ""
+            note : "",
+            adresseLien : "https://www.google.com/maps/place/Institut+universitaire+de+technologie+du+Havre/@49.5161141,0.1624614,17z/data=!4m14!1m7!3m6!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!2sInstitut+universitaire+de+technologie+du+Havre!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j!3m5!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoASAFQAw%3D%3D"
+
         },
     ]);
 
@@ -52,7 +86,15 @@ function Evenements()
     return(
         <div>
             <Header></Header>
-            <CaseEvent element={tabElementsEvenement[0]}></CaseEvent>
+            <div className="boutons-container">
+                <BoutonNotifications></BoutonNotifications>
+            </div>
+            <div className="case-event-container">
+                {tabElementsEvenement.map((element, index) => (
+                    <CaseEvent key={index} element={element} id={index} />
+                ))}
+            </div>
+
             <Footer></Footer>
         </div>
     )

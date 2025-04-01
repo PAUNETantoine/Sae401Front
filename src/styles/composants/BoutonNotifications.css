@@ -1,0 +1,9 @@
+.boutonNotification-container {
+    text-align: left;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.textBoutonNotif {
+    font-size: 25px;
+}
