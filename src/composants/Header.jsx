@@ -1,6 +1,6 @@
 import "../styles/composants/Header.css";
 import Bouton from "./Bouton";
-import { Link } from 'react-router-dom'; // Importation de Link de React Router
+import { Link } from 'react-router-dom';
 
 function Header()
 {
@@ -14,12 +14,11 @@ function Header()
                     <Bouton
                         image={"/ressources/images/logo_bde.png"}
                         className={"header-btn-image"}
-                        onClick={() => alert("Image cliquée !")}
-                        widthBtn={200}/>
+                        imageWidth={200} />
                 </Link>
 
-                <Link to="/Contact"><Bouton texte="Contact" className="header-btn"/></Link>
-                <Link to="/Connexion"><Bouton texte="Se connecter" className="header-btn"/></Link>
+                <Link to="/contact"><Bouton texte="Contact" className="header-btn"/></Link>
+                <Link to="/connexion"><Bouton texte="Se connecter" className="header-btn"/></Link>
             </nav>
         </div>
     );

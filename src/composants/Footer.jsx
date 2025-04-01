@@ -17,15 +17,15 @@ function Header()
                     image={"/ressources/images/logo_insta.png"}
                     className={"footer-btn-image"}
                     onClick={() => alert("Insta cliquée !")}
-                    widthBtn={30}
-                    heightBtn={30}
+                    imageWidth={30}
+                    imageHeight={30}
                 />
                 <Bouton
                     image={"/ressources/images/logo_discord.png"}
                     className={"footer-btn-image"}
                     onClick={() => alert("discord cliqué !")}
-                    widthBtn={30}
-                    heightBtn={30}
+                    imageWidth={30}
+                    imageHeight={30}
                 />
             </div>
         </div>
