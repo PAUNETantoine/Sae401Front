@@ -8,6 +8,74 @@
     box-sizing: border-box;
 }
 
-.cache {
-    display: none;
+.title-text {
+    display: inline-block; /* Ajuste la largeur au texte */
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #F1FFFA;
+    padding: 10px 30px; /* Ajoute du padding autour */
+    font-size: 40px;
+    border-radius: 20px; /* Ajoute un arrondi pour améliorer le visuel */
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.6); /* Ajoute un effet de flou */
+}
+
+.title-text {
+    display: block;
+    width: fit-content;
+    max-width: 80%;
+    margin: 40px auto 10px auto; /* Centre et ajoute un espace en bas */
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 30px;
+    color: #F1FFFA;
+    padding: 12px 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.6);
+    text-align: center; /* Centre le texte dans son bloc */
+
+}
+
+.description-text {
+    display: block;
+    width: fit-content;
+    max-width: 80%;
+    margin: 30px auto 0 auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 25px;
+    color: #F1FFFA;
+    padding: 12px 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    white-space: pre-line; /* Permet de prendre en compte les retours à la ligne */
+
+}
+
+.popup-image {
+    display: block;
+    width: 500px;
+    height: 300px;
+    margin: 10px auto; /* Centre l'image et ajoute un espace */
+    border-radius: 20px;
+}
+
+.description-event {
+    margin : 20px;
+    display: block;
+    text-align: center;
+    white-space: pre-line; /* Permet de prendre en compte les retours à la ligne */
+    font-size: 25px;
+    font-style: italic;
+}
+
+.infos-event, .infos-event-underline {
+    font-size: 30px;
+    font-weight: bold; /* Rend le texte en gras */
+    text-align: left;
+    white-space: pre-line;
+    margin-left: 150px;
+    margin-top: 40px;
+}
+
+.infos-event-underline {
+    text-underline: black;
 }

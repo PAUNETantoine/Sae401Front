@@ -1,14 +1,14 @@
 import "../styles/composants/PopUp.css";
 import Bouton from "./Bouton";
-import Accueil from "../pages/Accueil";
 
-function PopUp({ id, className }) {
+function PopUp({ id, className, setPopUp, children }) {
+
     const handleClose = () => {
-        document.getElementById(id).classList.add("cache"); // Fermer la pop-up
+        setPopUp(null); // Met à jour l'état pour fermer la popup
     };
 
     return (
-        <div id={id} className={className}>
+        <div id={id} className={className === "cache" ? "popup-hidden" : "popup-visible"}>
             {/* Superposition floutée */}
             <div className="popup-overlay" onClick={handleClose}></div>
 
@@ -18,8 +18,12 @@ function PopUp({ id, className }) {
                     image={"/ressources/images/closeBtn.png"}
                     className={"btn-img-close"}
                     onClick={handleClose}
+                    imageHeight={60}
+                    imgWidth={60}
+                    btnHeight={60}
+                    btnWidth={60}
                 />
-                <p>Contenu de la pop-up</p>
+                {children} {/* Contenu de la popup, qu'il soit un événement ou une newsletter */}
             </div>
         </div>
     );

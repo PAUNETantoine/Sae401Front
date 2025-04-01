@@ -188,7 +188,7 @@
 .btn-lireSuite {
     position: absolute;
     bottom: -75px; /* Espace du bas du conteneur */
-    right: -75px; /* Espace du côté droit du conteneur */
+    right: 0px; /* Espace du côté droit du conteneur */
     cursor: pointer;
     color: #3B4EFF;
     font-size: 20px !important;
