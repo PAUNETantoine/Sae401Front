@@ -65,3 +65,10 @@
 .underline {
     text-decoration: underline;
 }
+
+.btn-popup {
+    display: flex;
+    justify-content: center; /* Centre le bouton horizontalement */
+    align-items: center; /* Centre le bouton verticalement */
+    margin : 20px;
+}
