@@ -1,7 +1,7 @@
 import Header from "../composants/Header";
 import Footer from "../composants/Footer";
 import FormulaireContact from "../composants/FormulaireContact";
-import ListeMembreBDE from "../composants/ListeMembreBDE";
+import ListeMembresBDE from "../composants/ListeMembresBDE";
 import React from "react";
 
 function Contact()
@@ -9,7 +9,7 @@ function Contact()
     return (
         <div>
             <Header></Header>
-            <ListeMembreBDE></ListeMembreBDE>
+            <ListeMembresBDE></ListeMembresBDE>
             <FormulaireContact></FormulaireContact>
             <Footer></Footer>
         </div>

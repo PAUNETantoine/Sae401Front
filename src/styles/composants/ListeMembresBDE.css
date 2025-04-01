@@ -1,0 +1,50 @@
+.liste-membres-bde {
+    background-color: #D5C7BC;
+    width: 30%;
+    height: 60%;
+    padding: 20px;
+    font-size: 24px;
+    font-family: monospace;
+    color: #454545;
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-40%);
+
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Titre centré */
+.titre {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Conteneur des colonnes */
+.contenu-liste {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px;
+}
+
+/* Style des colonnes */
+.colonne {
+    list-style: none;
+    padding: 0;
+    width: 50%;
+}
+
+/* Style des éléments de la liste */
+.colonne li {
+    padding: 5px 0;
+    font-size: 20px;
+}

@@ -9,7 +9,7 @@
 
     position: absolute;
     top: 50%;
-    right: 50px;
+    right: 2.5%;
     transform: translateY(-40%);
 
     border-radius: 10px;
@@ -23,7 +23,6 @@
 .header-contact {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     width: 100%;
 }
 
@@ -56,7 +55,7 @@
 /* Bouton Envoyer */
 .btn-envoyer {
     background-color: #93B7BE;
-    border: 2px solid #3B4EFF;
+    border: 3px solid #3B4EFF;
     padding: 12px 24px;
     font-size: 20px;
     font-weight: bold;
@@ -66,5 +65,6 @@
 }
 
 .btn-envoyer:hover {
-    background-color: #7AA3AC;
+    border-width: 6px; /* Augmente l'épaisseur de la bordure */
+    padding: 9px 21px; /* Réduit légèrement le padding pour compenser */
 }
