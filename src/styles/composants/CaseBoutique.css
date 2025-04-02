@@ -1,37 +1,29 @@
 .case-produit {
-    width: 530px;
+    position: relative;
     height: 300px;
     background-size: cover;
     background-position: center;
     border-radius: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    position: relative;
-    font-family: 'Arial', sans-serif;
-    background-color: #D5C7BC;
     overflow: hidden;
+    margin-right : 50px;
+    margin-left : 50px;
+    border : 3px #454545 solid;
+    background-color: #D5C7BC;
 }
 
 .produit-title {
-    font-size: 25px;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    font-size: 36px;
+    color: #454545;
     font-weight: bold;
-    color: black;
-    left: -150px;
-    width: 90%;
-    margin-top: 5px;
-    text-decoration: underline;
-    position: relative;
     z-index: 2;
 }
 
 .produit-prix {
-    font-size: 35px;
-    font-weight: bold;
-    color: black;
+    font-size: 36px;
+    color: #454545;
     position: absolute;
     bottom: 5%;
     left: 8%;
@@ -39,9 +31,10 @@
 }
 
 .produit-qtt {
-    font-size: 35px;
+    font-size: 36px;
     display: flex;
     align-items: center;
+    color: #454545;
     position: absolute;
     bottom: 5%;
     right: 5%;
@@ -49,10 +42,9 @@
 }
 
 .produit-qtt-choix {
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 36px;
     margin: 0 10px;
-    border: 2px solid black;
+    border: 2px solid #454545;
     padding: 5px 10px;
     border-radius: 5px;
     z-index: 2;
@@ -63,17 +55,15 @@
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 90%;
-    max-width: 90%;
-    max-height: 90%;
+    height: 60%;
     z-index: 1;
 }
 
 button {
     background: none;
+    color: #454545;
     border: none;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 36px;
     cursor: pointer;
     z-index: 2;
 }

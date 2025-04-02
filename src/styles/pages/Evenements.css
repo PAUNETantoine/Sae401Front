@@ -1,6 +1,6 @@
 .case-event-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* S'ajuste automatiquement */
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 20px;
     justify-content: center;
     padding: 20px;
