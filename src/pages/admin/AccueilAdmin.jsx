@@ -4,7 +4,7 @@ import Carroussel from "../../composants/Carroussel";
 import Footer from "../../composants/Footer";
 import React, { useState } from "react";
 import PopUp from "../../composants/PopUp";
-import Bouton from "../..//Bouton";
+import Bouton from "../../Bouton";
 
 function Accueil() {
     const [tabElementsEvenement, setTabElementsEvenement] = useState([
