@@ -135,9 +135,6 @@ function Evenements()
         return false;
     }
 
-    useEffect(() => {
-        console.log(inscriptions)
-    }, [inscriptions]);
 
     useEffect(() => {
         if(popUp) {

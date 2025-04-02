@@ -1,0 +1,13 @@
+.case-produit-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
+    gap: 5%; /* Espacement entre les éléments */
+    justify-content: center;
+    padding: 5%; /* Ajout d'un padding pour éviter que ça colle aux bords */
+    margin-top : 6%;
+    margin-bottom: 100px;
+}
+
+.cache {
+    display: none;
+}

@@ -1,21 +1,42 @@
-import Bouton from "./Bouton";
 import React from "react";
+import "../styles/composants/CaseBoutique.css"
+import Bouton from "./Bouton";
 
-function CaseEvent ({element})
+function CaseEvent ({element, nbElementPanier, setPanier})
 {
+
+    const handleSelectionProduit = () => {
+
+    }
+
+    const handleAjouterProduit = () => {
+        if(nbElementPanier(element) < element.quantite)
+        {
+            setPanier((prevProduit) => [...prevProduit, element]);
+        }
+    }
+
+    const handleSupprimerProduit = () => {
+        setPanier((prevProduit) => {
+            const index = prevProduit.findIndex((produit) => produit.nom === element.nom);
+            if (index !== -1) {
+                const newPanier = [...prevProduit];
+                newPanier.splice(index, 1); // Supprime uniquement la première occurrence
+                return newPanier;
+            }
+            return prevProduit;
+        });
+    };
+
+
+
     return (
         <>
-            <div className="case-event" style={element.Image ? { backgroundImage: `url(${element.Image})` } : { backgroundImage: `url(/ressources/images/comming-soon.jpg)` }} onClick={handleSelectionCase}>
-                <p className={"event-title"}>{element.Titre + " " + element.date}</p>
-                <div className={"event-footer"}>
-                    <p className={"event-footer-text"}>{element.note ? ("Note : " + element.note) : ("Nombre d'inscrits : " + element.inscrits)}</p>
-                    <div className="boutons">
-                        <Bouton image={"/ressources/images/pin.png"} imageWidth={35} imageHeight={35} onClick={handleClickAdresse}></Bouton>
-                        {!element.note && (
-                            <Bouton image={(estInscrit ? "/ressources/images/registered.png" : "/ressources/images/register.png")} imageWidth={35} imageHeight={35} onClick={() => setInscriptions(element)}></Bouton>
-                        )}
-                    </div>
-                </div>
+            <div className="case-produit" onClick={handleSelectionProduit}>
+                <img className={"produit-image"} src={element.image ? element.image : "/ressources/images/comming-soon.jpg"}/>
+                <p className={"produit-title"}>{element.nom}</p>
+                <p className={"produit-prix"}>{element.prix + "€"}</p>
+                <p className={"produit-qtt"}><Bouton texte={"-"} onClick={handleSupprimerProduit}></Bouton><p className={"produit-qtt-choix"}>{nbElementPanier(element)}</p><Bouton texte={"+"} onClick={handleAjouterProduit}></Bouton></p>
             </div>
         </>
     )
