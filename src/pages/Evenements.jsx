@@ -84,7 +84,7 @@ function Evenements()
     ]);
 
     const [notificationsActives, setNotificationsActives] = useState(true);
-    const [inscriptions, setInscriptions] = useState([tabElementsEvenement[0], tabElementsEvenement[2]]);
+    const [inscriptions, setInscriptions] = useState([tabElementsEvenement[0], tabElementsEvenement[3]]);
     const [elementChoix, setElementChoix] = useState(null);
 
     const [popUp, setPopUp] = React.useState(false);
@@ -201,7 +201,6 @@ function Evenements()
                                 imageWidth={30}
                                 onClick={() => {
                                     toggleInscription(elementChoix);
-                                    console.log("État après clic :", inscriptions);
                                 }}
                             />
                         </div>

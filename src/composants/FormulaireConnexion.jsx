@@ -1,15 +1,17 @@
 import { useState } from "react";
-import { Link } from "react-router-dom"; // Import de Link pour la navigation
+import { Link, useNavigate } from "react-router-dom"; // Import de Link pour la navigation
 import Bouton from "./Bouton";
 import "../styles/composants/FormulaireConnexion.css";
 
 function FormulaireConnexion() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         alert(`Email: ${email}\nMot de passe: ${password}`);
+        navigate("/compte");
     };
 
     return (
@@ -35,7 +37,7 @@ function FormulaireConnexion() {
                     required
                 />
 
-                <Bouton texte="Se connecter" className="btn-action" />
+                <Bouton texte="Se connecter" className="btn-action"/>
             </form>
 
             <p className="inscription-link">

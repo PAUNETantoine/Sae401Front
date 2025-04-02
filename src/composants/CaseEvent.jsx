@@ -32,6 +32,8 @@ function CaseEvent({ element, id, setInscriptions, estInscrit }) {
         handleClosePopUp();
     }
 
+    console.log(estInscrit)
+
     return (
         <>
             <div className="case-event" style={element.Image ? { backgroundImage: `url(${element.Image})` } : { backgroundImage: `url(/ressources/images/comming-soon.jpg)` }} onClick={handleSelectionCase}>
@@ -52,7 +54,7 @@ function CaseEvent({ element, id, setInscriptions, estInscrit }) {
                                 imageHeight={35}
                                 onClick={(event) => {
                                     event.stopPropagation();
-                                    setInscriptions(element); // Appelle directement toggleInscription
+                                    setInscriptions(element);
                                 }}
                             />
                         )}
@@ -87,7 +89,14 @@ function CaseEvent({ element, id, setInscriptions, estInscrit }) {
                 )}
                 {!element.note && (
                     <div className={"btn-popup"}>
-                        <Bouton texte={"S'inscrire"} image={"/ressources/images/register.png"} className={"btn-action"} btnWidth={200} btnHeight={60} imageHeight={40} imageWidth={40} onClick={handleSinscrire}></Bouton>
+                        <Bouton
+                            texte={(!estInscrit ? "S'inscrire" : "Se désinscrire")}
+                            image={(estInscrit ? "/ressources/images/registered.png" : "/ressources/images/register.png")}
+                            className={"btn-action"}
+                            btnWidth={250} btnHeight={60}
+                            imageHeight={40} imageWidth={40}
+                            onClick={handleSinscrire}>
+                        </Bouton>
                     </div>
                 )}
             </PopUp>
