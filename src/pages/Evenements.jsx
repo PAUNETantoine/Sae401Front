@@ -3,10 +3,8 @@ import Footer from "../composants/Footer";
 import CaseEvent from "../composants/CaseEvent";
 import React, {useEffect, useState} from "react";
 import "../styles/pages/Evenements.css"
-import BoutonDropBox from "../composants/BoutonDropBox";
 import Bouton from "../composants/Bouton";
 import PopUp from "../composants/PopUp";
-import inscription from "./Inscription";
 
 function Evenements()
 {
@@ -139,15 +137,8 @@ function Evenements()
     };
 
     const estInscritEvenement = (event) => {
-        for(let i = 0 ; i < inscriptions.length; i++)
-        {
-            if(inscriptions[i].Titre === event.Titre)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
+        return inscriptions.some((e) => e.Titre === event.Titre);
+    };
 
 
     useEffect(() => {
@@ -208,7 +199,10 @@ function Evenements()
                                 className={"btn-action"}
                                 imageHeight={30}
                                 imageWidth={30}
-                                onClick={() => toggleInscription(elementChoix)}
+                                onClick={() => {
+                                    toggleInscription(elementChoix);
+                                    console.log("État après clic :", inscriptions);
+                                }}
                             />
                         </div>
                     )}

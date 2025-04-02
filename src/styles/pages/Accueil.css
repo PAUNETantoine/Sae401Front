@@ -13,7 +13,7 @@
     width: fit-content;
     margin: 20px auto 10px auto; /* Centre et ajoute un espace en bas */
     font-size: 40px;
-    color: black;
+    color: #454545;
     padding: 12px 20px;
     border-radius: 12px;
     text-align: center; /* Centre le texte dans son bloc */
@@ -47,6 +47,7 @@
     margin : 25px;
     display: block;
     text-align: center;
+    color: #454545;
     white-space: pre-line; /* Permet de prendre en compte les retours à la ligne */
     font-size: 25px;
     font-style: italic;
@@ -57,6 +58,7 @@
     font-weight: bold; /* Rend le texte en gras */
     text-align: left;
     white-space: pre-line;
+    color: #454545;
     margin-left: 150px;
     margin-right: 150px;
     margin-top: 20px;
