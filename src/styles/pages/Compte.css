@@ -1,0 +1,79 @@
+.compte {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    margin: 200px auto;
+    width: 80%;
+    max-width: 800px;
+    background-color: #D5C7BC;
+    border-radius: 40px;
+    padding: 20px;
+}
+
+
+.compte-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.compte-img {
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+}
+
+.compte-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    font-size: 26px;
+}
+
+.compte-info img {
+    width: 50px;
+    height: 50px;
+}
+
+.btn-modifier {
+    margin-left: 10px;
+}
+
+.btn-action {
+    margin-right: 20px;
+}
+
+.compte-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 26px;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.bouton-souligner {
+    text-decoration: underline;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.titre-historique-souligner {
+    margin-top: 40px;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 36px;
+}
+
+.historique-commandes {
+    margin-top: 20px;
+    background-color: #7AA3AC;
+    border-radius: 20px;
+    height: 200px;
+    width: 95%;
+    overflow: auto;
+}
