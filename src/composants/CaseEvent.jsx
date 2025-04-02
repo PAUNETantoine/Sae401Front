@@ -3,7 +3,7 @@ import "../styles/composants/CaseEvent.css";
 import PopUp from "./PopUp";
 import React, {useEffect} from "react";
 
-function CaseEvent({ element, id }) {
+function CaseEvent({ element, id, setInscriptions, estInscrit }) {
 
     const [popUp, setPopUp] = React.useState(false);
 
@@ -27,6 +27,10 @@ function CaseEvent({ element, id }) {
         setPopUp(false);
     }
 
+    const handleSinscrire = () => {
+        setInscriptions(element);
+        handleClosePopUp();
+    }
 
     return (
         <>
@@ -36,7 +40,9 @@ function CaseEvent({ element, id }) {
                     <p className={"event-footer-text"}>{element.note ? ("Note : " + element.note) : ("Nombre d'inscrits : " + element.inscrits)}</p>
                     <div className="boutons">
                         <Bouton image={"/ressources/images/pin.png"} imageWidth={35} imageHeight={35} onClick={handleClickAdresse}></Bouton>
-                        <Bouton image={"/ressources/images/register.png"} imageWidth={35} imageHeight={35}></Bouton>
+                        {!element.note && (
+                            <Bouton image={(estInscrit ? "/ressources/images/registered.png" : "/ressources/images/register.png")} imageWidth={35} imageHeight={35} onClick={() => setInscriptions(element)}></Bouton>
+                        )}
                     </div>
                 </div>
             </div>
@@ -68,7 +74,7 @@ function CaseEvent({ element, id }) {
                 )}
                 {!element.note && (
                     <div className={"btn-popup"}>
-                        <Bouton texte={"S'inscrire"} image={"/ressources/images/register.png"} className={"btn-action"} btnWidth={200} btnHeight={60} imageHeight={40} imageWidth={40}></Bouton>
+                        <Bouton texte={"S'inscrire"} image={"/ressources/images/register.png"} className={"btn-action"} btnWidth={200} btnHeight={60} imageHeight={40} imageWidth={40} onClick={handleSinscrire}></Bouton>
                     </div>
                 )}
             </PopUp>

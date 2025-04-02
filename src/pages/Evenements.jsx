@@ -6,6 +6,7 @@ import "../styles/pages/Evenements.css"
 import BoutonDropBox from "../composants/BoutonDropBox";
 import Bouton from "../composants/Bouton";
 import PopUp from "../composants/PopUp";
+import inscription from "./Inscription";
 
 function Evenements()
 {
@@ -113,8 +114,30 @@ function Evenements()
     }
 
     const ajouterInscription = (element) => {
-        setInscriptions(element);
+        setInscriptions((prevInscriptions) => [...prevInscriptions, element]);
+    };
+
+    const annulerEvenement = (event) => {
+        setInscriptions((prevInscriptions) =>
+            prevInscriptions.filter((inscription) => inscription.Titre !== event.Titre)
+        );
+        handleClosePopUp();
+    };
+
+    const estInscritEvenement = (event) => {
+        for(let i = 0 ; i < inscriptions.length; i++)
+        {
+            if(inscriptions[i].Titre === event.Titre)
+            {
+                return true;
+            }
+        }
+        return false;
     }
+
+    useEffect(() => {
+        console.log(inscriptions)
+    }, [inscriptions]);
 
     useEffect(() => {
         if(popUp) {
@@ -188,7 +211,7 @@ function Evenements()
                             <div className={"inscription-container"} key={index}>
                                 <p>{"> " + inscription.Titre + " " + inscription.date + (inscription.note ? " (Passé(e))" : " (À venir)")}</p>
                                 {!inscription.note && (
-                                    <Bouton texte={"Annuler"} height={70} width={120} className={"btn-action"} onClick={handleClosePopUp} />
+                                    <Bouton texte={"Annuler"} height={70} width={120} className={"btn-action"} onClick={() => annulerEvenement(inscription)} />
                                 )}
                                 {inscription.note && (
                                     <Bouton texte={"Noter"} height={70} width={120} className={"btn-action"} onClick={() => handlePasserPopUpEvent(inscription)} />
@@ -201,7 +224,7 @@ function Evenements()
             </div>
             <div className="case-event-container">
                 {tabElementsEvenement.map((element, index) => (
-                    <CaseEvent key={index} element={element} id={index} />
+                    <CaseEvent key={index} element={element} id={index} setInscriptions={ajouterInscription} estInscrit={estInscritEvenement(element)} />
                 ))}
             </div>
 

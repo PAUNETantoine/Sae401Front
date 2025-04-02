@@ -4,6 +4,7 @@ import Contact from './pages/Contact.jsx';
 import Evenements from './pages/Evenements.jsx';
 import Connexion from './pages/Connexion.jsx';
 import Inscription from './pages/Inscription.jsx';
+import Boutique from "./pages/Boutique";
 
 
 
@@ -17,6 +18,7 @@ function App()
             <Route path="/evenements" element={<Evenements />} />
             <Route path="/connexion" element={<Connexion />} />
             <Route path="/inscription" element={<Inscription />} />
+            <Route path="/boutique" element={<Boutique />} />
         </Routes>
       </Router>
   );
