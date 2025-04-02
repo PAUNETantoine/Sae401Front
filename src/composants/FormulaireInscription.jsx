@@ -74,7 +74,7 @@ function FormulaireInscription() {
                     />
                 </div>
 
-                <Bouton texte="S'inscrire" className="btn-inscription" />
+                <Bouton texte="S'inscrire" className="btn-action" />
             </form>
         </div>
     );

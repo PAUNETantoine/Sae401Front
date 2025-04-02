@@ -85,6 +85,7 @@ function Evenements()
         },
     ]);
 
+    const [notificationsActives, setNotificationsActives] = useState(true);
     const [inscriptions, setInscriptions] = useState([tabElementsEvenement[0], tabElementsEvenement[2]]);
     const [elementChoix, setElementChoix] = useState(null);
 
@@ -93,6 +94,10 @@ function Evenements()
     const handleInscriptions = () => {
         setPopUp(true);
     }
+
+    const toggleNotifications = () => {
+        setNotificationsActives((prev) => !prev);
+    };
 
     const handleClosePopUp = () => {
         setPopUp(false);
@@ -113,8 +118,17 @@ function Evenements()
         setPopUpEvent(true);
     }
 
-    const ajouterInscription = (element) => {
-        setInscriptions((prevInscriptions) => [...prevInscriptions, element]);
+    const toggleInscription = (element) => {
+        setInscriptions((prevInscriptions) => {
+            // Vérifie si l'événement est déjà inscrit
+            if (prevInscriptions.some(e => e.Titre === element.Titre)) {
+                // Désinscription
+                return prevInscriptions.filter(e => e.Titre !== element.Titre);
+            } else {
+                // Inscription
+                return [...prevInscriptions, element];
+            }
+        });
     };
 
     const annulerEvenement = (event) => {
@@ -188,22 +202,44 @@ function Evenements()
                     )}
                     {!elementChoix.note && (
                         <div className={"btn-popup"}>
-                            <Bouton texte={"S'inscrire"} image={"/ressources/images/register.png"} className={"btn-action"} btnWidth={200} btnHeight={60} imageHeight={40} imageWidth={40}></Bouton>
+                            <Bouton
+                                texte={estInscritEvenement(elementChoix) ? "Se désinscrire" : "S'inscrire"}
+                                image={estInscritEvenement(elementChoix) ? "/ressources/images/registered.png" : "/ressources/images/register.png"}
+                                className={"btn-action"}
+                                imageHeight={30}
+                                imageWidth={30}
+                                onClick={() => toggleInscription(elementChoix)}
+                            />
                         </div>
                     )}
                 </PopUp>
             )}
 
             <div className="boutons-container">
-                <BoutonDropBox titre={"Notifications"} texte1={"Activées"} texte2={"Désactivées"}></BoutonDropBox>
-                <Bouton onClick={handleInscriptions} texte={"Mes inscriptions"} image={"/ressources/images/registered.png"} imageHeight={50} imageWidth={50} width={200} height={70} className={"btn-inscriptions"}></Bouton>
+                <Bouton
+                    onClick={toggleNotifications}
+                    texte={notificationsActives ? "Notifications activées" : "Notifications désactivées"}
+                    image={notificationsActives ? "/ressources/images/notifications_fill.png" : "/ressources/images/notifications_pas_fill.png"}
+                    imageHeight={30}
+                    imageWidth={30}
+                    className={"btn-action"}
+                />
+
+                <Bouton
+                    onClick={handleInscriptions}
+                    texte={"Mes inscriptions"}
+                    image={"/ressources/images/registered.png"}
+                    imageHeight={30}
+                    imageWidth={30}
+                    className={"btn-action"}>
+                </Bouton>
 
                 <PopUp id={"popUpInscriptions"} className={popUp ? "popup-visible" : "cache"} setPopUp={handleClosePopUp}>
                     <div className={"titre-popup-inscriptions"}>
                         <span>Mes inscriptions</span>
-                        <img src={"/ressources/images/registered.png"} width={80} height={80} />
+                        <img src={"/ressources/images/registered.png"} width={50} height={50} />
                     </div>
-                    <div className={"zoneText-popup-inscriptions"}>
+                    <div className={"zone-text-popup-inscriptions"}>
                         {inscriptions.map((inscription, index) => (
                             <div className={"inscription-container"} key={index}>
                                 <p>{"> " + inscription.Titre + " " + inscription.date + (inscription.note ? " (Passé(e))" : " (À venir)")}</p>
@@ -221,7 +257,13 @@ function Evenements()
             </div>
             <div className="case-event-container">
                 {tabElementsEvenement.map((element, index) => (
-                    <CaseEvent key={index} element={element} id={index} setInscriptions={ajouterInscription} estInscrit={estInscritEvenement(element)} />
+                    <CaseEvent
+                        key={index}
+                        element={element}
+                        id={index}
+                        setInscriptions={toggleInscription}
+                        estInscrit={estInscritEvenement(element)}
+                    />
                 ))}
             </div>
 

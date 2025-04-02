@@ -2,7 +2,8 @@ import "../styles/composants/Bouton.css";
 
 function Bouton({ texte, onClick, className, image, btnWidth, btnHeight, imageWidth, imageHeight }) {
     return (
-        <div
+        <div>
+            <button
             className={className}
             onClick={onClick}
             style={{
@@ -13,7 +14,7 @@ function Bouton({ texte, onClick, className, image, btnWidth, btnHeight, imageWi
                 justifyContent: 'center',
                 cursor: 'pointer'
             }}
-        >
+            >
             {texte && <p style={{ fontSize: "1em", marginRight: image ? '10px' : '0' }}>{texte}</p>}
 
             {image &&
@@ -26,6 +27,7 @@ function Bouton({ texte, onClick, className, image, btnWidth, btnHeight, imageWi
                     }}
                 />
             }
+            </button>
         </div>
     );
 }

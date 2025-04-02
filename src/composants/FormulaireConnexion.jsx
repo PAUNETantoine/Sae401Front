@@ -35,7 +35,7 @@ function FormulaireConnexion() {
                     required
                 />
 
-                <Bouton texte="Se connecter" className="btn-connexion" />
+                <Bouton texte="Se connecter" className="btn-action" />
             </form>
 
             <p className="inscription-link">

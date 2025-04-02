@@ -1,26 +1,21 @@
 .case-event-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
-    gap: 50px; /* Espacement entre les éléments */
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* S'ajuste automatiquement */
+    gap: 20px;
     justify-content: center;
-    padding: 20px; /* Ajout d'un padding pour éviter que ça colle aux bords */
+    padding: 20px;
 }
+
+
 
 .boutons-container {
     display: flex;
-    justify-content: space-between; /* Place les boutons aux extrémités */
-    align-items: center; /* Centre les boutons verticalement si nécessaire */
-    width: calc(100% - 300px); /* Ajuste la largeur sans déborder */
-    max-width: 100%; /* Empêche le débordement */
-    margin: 120px auto 60px auto; /* Centrage horizontal */
-    padding: 0 150px; /* Garde un espacement intérieur sans décaler */
-}
-
-
-.btn-inscriptions {
-    text-decoration: underline;
-    font-weight: bold;
-    font-size: 25px;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 300px);
+    max-width: 100%;
+    margin: 160px auto 60px auto;
+    padding: 0 150px;
 }
 
 .cache {
@@ -28,26 +23,27 @@
 }
 
 .titre-popup-inscriptions {
-    display: flex; /* Aligne les éléments horizontalement */
-    align-items: center; /* Centre verticalement l'image et le texte */
-    gap: 15px; /* Espacement entre le texte et l'image */
-    font-size: 30px;
+    color: #454545;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 28px;
     font-weight: bold;
-    text-decoration: underline;
     text-align: center;
     justify-content: center;
     margin-top: 20px;
 }
 
-.zoneText-popup-inscriptions {
+.zone-text-popup-inscriptions {
+    color: #454545;
     display: flex;
-    flex-direction: column; /* Aligne les éléments verticalement */
-    align-items: center; /* Centre horizontalement les éléments */
-    gap: 40px; /* Espacement entre les éléments */
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
     margin-top: 50px;
     font-size: 25px;
     font-weight: bold;
-    justify-content: center; /* Centre verticalement si nécessaire */
+    justify-content: center;
 }
 
 .inscription-container {
