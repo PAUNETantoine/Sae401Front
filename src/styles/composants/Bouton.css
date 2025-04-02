@@ -10,6 +10,18 @@
     transition: background 0.3s;
 }
 
+.btn-action-select {
+    background-color: #93B7BE;
+    border: 6px solid #3B4EFF;
+    color: black;
+    padding: 12px 24px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background 0.3s;
+}
+
 .btn-action:hover {
     background-color: #7AA3AC;
 }

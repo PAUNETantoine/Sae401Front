@@ -5,6 +5,7 @@ import Evenements from './pages/Evenements.jsx';
 import Connexion from './pages/Connexion.jsx';
 import Inscription from './pages/Inscription.jsx';
 import Boutique from "./pages/Boutique";
+import PageProduit from "./pages/PageProduit";
 
 
 
@@ -19,6 +20,7 @@ function App()
             <Route path="/connexion" element={<Connexion />} />
             <Route path="/inscription" element={<Inscription />} />
             <Route path="/boutique" element={<Boutique />} />
+            <Route path="/produit/:nom" element={<PageProduit />} />
         </Routes>
       </Router>
   );

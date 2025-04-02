@@ -1,0 +1,81 @@
+.PageProduit-image {
+    background-color: #D5C7BC;
+    width: 620px;
+    height: 690px;
+    position: relative;
+    left: 80px;
+    top: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+}
+
+.PageProduit-image img {
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 620px;
+}
+
+.PageProduit-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+    margin-right: 50px;
+}
+
+.PageProduit-description-produit {
+    flex: 1;
+    max-width: 900px;
+    position: relative;
+    top: 200px;
+    left: 200px;
+    background-color: #D5C7BC;
+    color: black;
+    padding: 20px;
+    border-radius: 40px;
+}
+
+.PageProduit-nom-produit {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.description-produit {
+    font-size: 25px;
+    font-style: italic;
+    white-space: pre-line;
+    margin-bottom: 20px;
+}
+
+.PageProduit-actions {
+    display: flex;
+    flex-direction: column; /* Met les tailles au-dessus du bouton */
+    align-items: flex-end; /* Aligne les éléments à droite */
+    gap: 10px; /* Espacement entre les éléments */
+}
+
+.PageProduit-tailles {
+    display: flex;
+    gap: 10px;
+}
+
+.PageProduit-bottom {
+    display: flex;
+    justify-content: space-between; /* Répartit les éléments sur toute la largeur */
+    align-items: center; /* Centre verticalement */
+    margin-top: auto; /* Pousse l'élément vers le bas */
+}
+
+.prix-produit {
+    font-size: 60px;
+    font-weight: bold;
+    color: #333;
+    position: absolute;
+    bottom: 50px; /* Place le prix tout en bas */
+    left: 80px; /* Décale le prix vers la gauche */
+}
+

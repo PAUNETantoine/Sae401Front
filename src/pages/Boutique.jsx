@@ -5,6 +5,7 @@ import React, {useEffect, useState} from "react";
 import "../styles/pages/Boutique.css"
 import PopUp from "../composants/PopUp";
 import Bouton from "../composants/Bouton";
+import emailjs from "emailjs-com";
 
 
 function Boutique()
@@ -91,23 +92,11 @@ function Boutique()
 
 
     const handleAjouterProduit = (element) => {
-        setPanier((prevPanier) => {
-            console.log("Tentative d'ajout du produit :", element.nom);
-
-            const count = prevPanier.filter(produit => produit.nom === element.nom).length;
-
-            console.log("Quantité actuelle dans le panier :", count, " / Stock disponible :", element.quantite);
-
-            if (count >= element.quantite) {
-                console.log("Stock atteint, ajout impossible !");
-                return prevPanier;
-            }
-
-            console.log("Ajout réussi !");
-            return [...prevPanier, element];
-        });
-    };
-
+        if(nbElementPanier(element) < element.quantite)
+        {
+            setPanier((prevProduit) => [...prevProduit, element]);
+        }
+    }
 
     const handleSupprimerProduit = (element) => {
         setPanier((prevProduit) => {
@@ -120,6 +109,72 @@ function Boutique()
             return prevProduit;
         });
     };
+
+    const handleCommanderProduits = () => {
+
+        if(panier.length <= 0)
+        {
+            alert("Aucun produit dans votre panier")
+            return;
+        }
+
+        const produitsCommande = panier.reduce((acc, produit) => {
+            if (!acc[produit.nom]) {
+                acc[produit.nom] = { ...produit, quantite: 1 };
+            } else {
+                acc[produit.nom].quantite += 1;
+            }
+            return acc;
+        }, {});
+
+
+        let messageCommande = "Commande :\n";
+
+        Object.values(produitsCommande).forEach((produit) => {
+            messageCommande += `- ${produit.nom}, Quantité: ${produit.quantite}, Prix unitaire: ${produit.prix}€\n`;
+        });
+
+        messageCommande += `\nTotal: ${getPrixTotal()}€`;
+
+        // Préparer les paramètres pour l'email
+        const templateParams = {
+            sujet: "Commande Client : " + "Nom Client",
+            message: messageCommande,
+            to_name: "BDE",
+            from_name: "Formulaire Contact",
+        };
+
+        // Envoyer l'email avec EmailJS
+        emailjs
+            .send(
+                "service_m8xp49n",  // Service ID EmailJS
+                "template_ilonaor",  // Template ID EmailJS
+                templateParams,
+                "msDmNCZkXw2kEZ3yi" // User ID EmailJS
+            )
+            .then(
+                (response) => {
+                    console.log("Email envoyé", response);
+                    alert("Votre commande a été envoyée !");
+                    setPanier([])
+                },
+                (err) => {
+                    console.error("Échec de l'envoi", err);
+                    alert("Une erreur est survenue. Essayez de nouveau.");
+                }
+            );
+    };
+
+
+    const getPrixTotal = () => {
+        let prix = 0;
+
+        {panier.map((produit, index) => (
+            prix += produit.prix
+        ))}
+
+        return prix;
+    }
 
 
 
@@ -136,10 +191,9 @@ function Boutique()
                     {Object.values(
                         panier.reduce((produitsUniques, produit) => {
                             if (!produitsUniques[produit.nom]) {
-                                produitsUniques[produit.nom] = { ...produit, quantite: 0 };
+                                produitsUniques[produit.nom] = produit; // Ne pas modifier la quantité
                             }
-                            produitsUniques[produit.nom].quantite++;
-                            return produitsUniques;
+                            return produitsUniques; // Retourner l'objet mis à jour
                         }, {})
                     ).map((produit, index) => (
                         <div className={"inscription-container"} key={index}>
@@ -148,18 +202,21 @@ function Boutique()
                                 <p className={"prix-produit-panier"}>{produit.prix}€</p>
                                 <div className={"produit-qtt-panier"}>
                                     <Bouton className="bouton-qtt-panier" texte={"-"} onClick={() => handleSupprimerProduit(produit)} />
-                                    <span className={"produit-qtt-choix"}>{produit.quantite}</span>
+                                    <span className={"produit-qtt-choix"}>{nbElementPanier(produit)}</span>
                                     <Bouton className="bouton-qtt-panier" texte={"+"} onClick={() => handleAjouterProduit(produit)} />
                                 </div>
                             </div>
                         </div>
                     ))}
                     {panier.length === 0 && <p>Aucun produit dans le panier</p>}
+
+                    <p>Total : {getPrixTotal()}€</p>
+
+                    <div className={"bouton-commander-container"}>
+                        <Bouton texte={"Commander"} className={"btn-action"} onClick={handleCommanderProduits}></Bouton>
+                    </div>
                 </div>
             </PopUp>
-
-
-
 
             <div className="bouton-container">
                 <Bouton

@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/composants/CaseBoutique.css"
 import Bouton from "./Bouton";
+import {Link} from "react-router-dom";
 
 function CaseEvent ({element, nbElementPanier, setPanier})
 {
@@ -33,9 +34,11 @@ function CaseEvent ({element, nbElementPanier, setPanier})
     return (
         <>
             <div className="case-produit" onClick={handleSelectionProduit}>
-                <img className={"produit-image"} src={element.image ? element.image : "/ressources/images/comming-soon.jpg"}/>
-                <p className={"produit-title"}>{element.nom}</p>
-                <p className={"produit-prix"}>{element.prix + "€"}</p>
+                <Link to={`/produit/${element.nom}`}>
+                    <img className={"produit-image"} src={element.image ? element.image : "/ressources/images/comming-soon.jpg"}/>
+                    <p className={"produit-title"}>{element.nom}</p>
+                    <p className={"produit-prix"}>{element.prix + "€"}</p>
+                </Link>
                 <div className={"produit-qtt"}><Bouton texte={"-"} onClick={handleSupprimerProduit}></Bouton><p className={"produit-qtt-choix"}>{nbElementPanier(element)}</p><Bouton texte={"+"} onClick={handleAjouterProduit}></Bouton></div>
             </div>
         </>

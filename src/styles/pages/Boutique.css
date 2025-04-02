@@ -54,4 +54,10 @@
     justify-content: flex-start; /* Change de flex-end à flex-start pour les rapprocher du prix */
 }
 
-
+.bouton-commander-container
+{
+    position: absolute;
+    display: flex;
+    right: 42%;
+    bottom: 5%;
+}
