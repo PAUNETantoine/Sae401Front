@@ -11,3 +11,47 @@
 .cache {
     display: none;
 }
+
+.bouton-container {
+    position: absolute;
+    top: 120px;
+    right: 150px;
+}
+
+.ligne-produit {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacement entre les éléments */
+    width: 100%;
+    flex-wrap: nowrap; /* Empêche le retour à la ligne */
+}
+
+.nom-produit-panier {
+    font-weight: bold;
+    flex: 2; /* Garde de l'espace pour le nom */
+    white-space: nowrap; /* Empêche le retour à la ligne */
+}
+
+.prix-produit-panier {
+    font-weight: bold;
+    flex: 0.8; /* Réduit la largeur pour ne pas prendre trop de place */
+    white-space: nowrap;
+    text-align: center;
+}
+
+
+.bouton-qtt-panier {
+    min-width: 30px; /* Évite que les boutons soient trop petits */
+    text-align: center;
+    margin-bottom: 0; /* Suppression du margin-bottom inutile */
+}
+
+.produit-qtt-panier {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+    justify-content: flex-start; /* Change de flex-end à flex-start pour les rapprocher du prix */
+}
+
+

@@ -36,7 +36,7 @@ function CaseEvent ({element, nbElementPanier, setPanier})
                 <img className={"produit-image"} src={element.image ? element.image : "/ressources/images/comming-soon.jpg"}/>
                 <p className={"produit-title"}>{element.nom}</p>
                 <p className={"produit-prix"}>{element.prix + "€"}</p>
-                <p className={"produit-qtt"}><Bouton texte={"-"} onClick={handleSupprimerProduit}></Bouton><p className={"produit-qtt-choix"}>{nbElementPanier(element)}</p><Bouton texte={"+"} onClick={handleAjouterProduit}></Bouton></p>
+                <div className={"produit-qtt"}><Bouton texte={"-"} onClick={handleSupprimerProduit}></Bouton><p className={"produit-qtt-choix"}>{nbElementPanier(element)}</p><Bouton texte={"+"} onClick={handleAjouterProduit}></Bouton></div>
             </div>
         </>
     )
