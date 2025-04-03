@@ -1,6 +1,5 @@
 async function getEvenementActu()
 {
-    console.log("Ok")
 
     try {
         // Ajout des paramètres dans l'URL pour la requête GET
@@ -12,6 +11,8 @@ async function getEvenementActu()
         });
 
         const data = await response.json();
+
+        console.log(data)
 
         if (response.status === 200)
         {
