@@ -23,6 +23,7 @@ async function getEvenementActu()
             alert(data.error);
         }
     } catch (err) {
+        console.log(err);
         //alert('Erreur serveur');
     }
 }
