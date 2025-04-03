@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"; // Import de Link pour la 
 import Bouton from "./Bouton";
 import "../styles/composants/FormulaireConnexion.css";
 import {getInfosCompte} from "../scripts/ConnexionCompte";
+import {envoyerConnexion} from "../scripts/ConnexionConnexion";
 
 function FormulaireConnexion() {
     const [email, setEmail] = useState("");
