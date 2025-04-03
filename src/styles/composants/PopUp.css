@@ -41,3 +41,40 @@
 .cache {
     display: none;
 }
+
+.popup-container h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #454545;
+}
+
+.popup-container input {
+    width: 100%;
+    margin-top: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: monospace;
+}
+
+/* Zone de texte Message */
+.popup-container textarea {
+    width: 100%;
+    height: 70%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: monospace;
+    resize: none;
+    margin-top: 20px;
+}
+
+.boutons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    gap: 20px; /* Espacement entre les boutons */
+}

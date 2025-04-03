@@ -5,11 +5,11 @@ import Footer from "../composants/Footer";
 import React, {useEffect, useState} from "react";
 import PopUp from "../composants/PopUp";
 import Bouton from "../composants/Bouton";
-import {getEvenementActu, getNewsLetter} from "../scripts/ConnexionAccueil";
+import {getEvenementActu} from "../scripts/ConnexionAccueil";
 
 function Accueil()
 {
-    const [tabElementsEvenement, setTabElementsEvenement] = useState([
+    const [tabElementsEvenement] = useState([
         {
             Titre: "Laser Game",
             Image: "/ressources/images/laserGame.webp",
@@ -75,7 +75,7 @@ function Accueil()
         },
     ]);
 
-    const [tabElementsNewsletter, setTabElementsNewsletter] = useState([
+    const [tabElementsNewsletter] = useState([
         {
             Titre: "Le Bde : Au coeur de la vie étudiante",
             text: "Le bde à pour projet de rassembler les étudiants en informatique afin de leur donne l’opportunité de découvrir le reste de la promo tout en faisant des soirées amusantes avec de nombreuses activités.",

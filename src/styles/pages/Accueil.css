@@ -74,3 +74,16 @@
     align-items: center; /* Centre le bouton verticalement */
     margin : 20px;
 }
+
+.boutons-admin-event {
+    position: absolute;
+    left: 500px;
+    z-index: 1;
+}
+
+.boutons-admin-news {
+    position: absolute;
+    right: 500px;
+    z-index: 1;
+}
+

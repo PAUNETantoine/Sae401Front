@@ -98,24 +98,44 @@ function AccueilAdmin() {
         },
     ]);
 
-    const [popUp, setPopUp] = useState(null); // "Events" ou "Newsletter"
+    const [popUp, setPopUp] = useState(null);
     const [selectedElement, setSelectedElement] = useState(null);
+    const [editContent, setEditContent] = useState({ Titre: "", text: "" });
+    const [isEditingNews, setIsEditingNews] = useState(false);
 
-    // Quand un élément est sélectionné, afficher la popup
+    const [newNewsContent, setNewNewsContent] = useState({ Titre: "", text: "" });
+    const [isCreatingNews, setIsCreatingNews] = useState(false);
+
+    const [newEventContent, setNewEventContent] = useState({
+        Titre: "",
+        Image: "",
+        date: "",
+        description: "",
+        adresse: "",
+        prix: "",
+        inscrits: "",
+        note: "",
+        adresseLien: "",
+    });
+    const [isCreatingEvent, setIsCreatingEvent] = useState(false);
+    const [isEditingEvent, setIsEditingEvent] = useState(false);
+    const [editEventContent, setEditEventContent] = useState(null);
+
     const showPopUp = (type, element) => {
         setPopUp(type);
-        setSelectedElement(element); // On met à jour l'élément sélectionné
+        setSelectedElement(element);
+        setIsEditingNews(false);
+    };
+
+    const closePopUp = () => {
+        setPopUp(null);
+        setIsEditingNews(false);
     };
 
     return (
         <>
             <div>
                 <Header />
-                <div className="boutons-admin">
-                    <Bouton className="bouton-action"></Bouton>
-
-                </div>
-
                 <div className="carroussel-container-global">
                     <Carroussel
                         tabElementsEvenement={tabElementsEvenement}
@@ -134,36 +154,300 @@ function AccueilAdmin() {
                 </div>
 
                 <Footer />
+
+                <div className="boutons-admin-news">
+                    <Bouton texte="Créer une News" className="btn-action" onClick={() => setIsCreatingNews(true)} />
+                </div>
+
+                <div className="boutons-admin-event">
+                    <Bouton texte="Créer un Événement" className="btn-action" onClick={() => setIsCreatingEvent(true)} />
+                </div>
             </div>
 
-            {popUp && selectedElement && (
+            {/* Pop-Up pour afficher ou modifier une newsletter */}
+            {popUp === "Newsletter" && selectedElement && !isEditingNews ? (
+                <PopUp id="PopUp" className={popUp ? "popup-visible" : "cache"} setPopUp={closePopUp}>
+                    <>
+                        <p className="title-text">{selectedElement.Titre}</p>
+                        <p className="description-text">{selectedElement.text}</p>
+                        <div className="boutons">
+                            <Bouton texte="Modifier" className="btn-action" onClick={() => {
+                                setIsEditingNews(true);
+                                setEditContent(selectedElement);
+                            }} />
+                        </div>
+                    </>
+                </PopUp>
+            ) : popUp === "Newsletter" && (
+                <PopUp id="PopUp" className={popUp ? "popup-visible" : "cache"} setPopUp={closePopUp}>
+                    <>
+                        <h2>Modifier la News</h2>
+                        <input
+                            type="text"
+                            value={editContent.Titre}
+                            onChange={(e) => setEditContent({ ...editContent, Titre: e.target.value })}
+                        />
+                        <textarea
+                            value={editContent.text}
+                            onChange={(e) => setEditContent({ ...editContent, text: e.target.value })}
+                        />
+                        <div className="boutons">
+                            <Bouton texte="Enregistrer" className="btn-action" onClick={() => {
+                                const updatedNews = tabElementsNewsletter.map(news =>
+                                    news.Titre === selectedElement.Titre ? editContent : news
+                                );
+                                setTabElementsNewsletter(updatedNews);
+                                closePopUp();
+                            }} />
+                            <Bouton texte="Annuler" className="btn-action" onClick={closePopUp} />
+                        </div>
+                    </>
+                </PopUp>
+            )}
+
+
+            {isCreatingEvent && (
+                <PopUp id="PopUp" className={"popup-visible"} setPopUp={() => setIsCreatingEvent(false)}>
+                    <>
+                        <h2>Créer un Événement</h2>
+                        <input
+                            type="text"
+                            placeholder="Titre de l'Événement"
+                            value={newEventContent.Titre}
+                            onChange={(e) => setNewEventContent({ ...newEventContent, Titre: e.target.value })}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Image (URL)"
+                            value={newEventContent.Image}
+                            onChange={(e) => setNewEventContent({ ...newEventContent, Image: e.target.value })}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Date"
+                            value={newEventContent.date}
+                            onChange={(e) => setNewEventContent({ ...newEventContent, date: e.target.value })}
+                        />
+                        <textarea
+                            placeholder="Description"
+                            value={newEventContent.description}
+                            onChange={(e) => setNewEventContent({ ...newEventContent, description: e.target.value })}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Adresse"
+                            value={newEventContent.adresse}
+                            onChange={(e) => setNewEventContent({ ...newEventContent, adresse: e.target.value })}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Prix"
+                            value={newEventContent.prix}
+                            onChange={(e) => setNewEventContent({ ...newEventContent, prix: e.target.value })}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Nombre d'inscrits"
+                            value={newEventContent.inscrits}
+                            onChange={(e) => setNewEventContent({ ...newEventContent, inscrits: e.target.value })}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Note"
+                            value={newEventContent.note}
+                            onChange={(e) => setNewEventContent({ ...newEventContent, note: e.target.value })}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Lien Google Maps"
+                            value={newEventContent.adresseLien}
+                            onChange={(e) => setNewEventContent({ ...newEventContent, adresseLien: e.target.value })}
+                        />
+                        <div className="boutons">
+                            <Bouton texte="Enregistrer" className="btn-action" onClick={() => {
+                                if (newEventContent.Titre && newEventContent.description) {
+                                    setTabElementsEvenement([...tabElementsEvenement, newEventContent]);
+                                    setNewEventContent({
+                                        Titre: "",
+                                        Image: "",
+                                        date: "",
+                                        description: "",
+                                        adresse: "",
+                                        prix: "",
+                                        inscrits: "",
+                                        note: "",
+                                        adresseLien: "",
+                                    });
+                                    setIsCreatingEvent(false);
+                                } else {
+                                    alert("Veuillez remplir tous les champs obligatoires.");
+                                }
+                            }} />
+                            <Bouton texte="Annuler" className="btn-action" onClick={() => {
+                                setIsCreatingEvent(false);
+                                setNewEventContent({
+                                    Titre: "",
+                                    Image: "",
+                                    date: "",
+                                    description: "",
+                                    adresse: "",
+                                    prix: "",
+                                    inscrits: "",
+                                    note: "",
+                                    adresseLien: "",
+                                });
+                            }} />
+                        </div>
+                    </>
+                </PopUp>
+            )}
+
+
+            {isEditingEvent && editEventContent && (
+                <PopUp id="PopUp" className={"popup-visible"} setPopUp={() => setIsEditingEvent(false)}>
+                    <>
+                        <h2>Modifier l'Événement</h2>
+                        <input
+                            type="text"
+                            value={editEventContent.Titre}
+                            onChange={(e) => setEditEventContent({ ...editEventContent, Titre: e.target.value })}
+                            placeholder="Titre de l'Événement"
+                        />
+                        <input
+                            type="text"
+                            value={editEventContent.Image}
+                            onChange={(e) => setEditEventContent({ ...editEventContent, Image: e.target.value })}
+                            placeholder="URL de l'image"
+                        />
+                        <input
+                            type="text"
+                            value={editEventContent.date}
+                            onChange={(e) => setEditEventContent({ ...editEventContent, date: e.target.value })}
+                            placeholder="Date"
+                        />
+                        <textarea
+                            value={editEventContent.description}
+                            onChange={(e) => setEditEventContent({ ...editEventContent, description: e.target.value })}
+                            placeholder="Description"
+                        />
+                        <input
+                            type="text"
+                            value={editEventContent.adresse}
+                            onChange={(e) => setEditEventContent({ ...editEventContent, adresse: e.target.value })}
+                            placeholder="Adresse"
+                        />
+                        <input
+                            type="text"
+                            value={editEventContent.prix}
+                            onChange={(e) => setEditEventContent({ ...editEventContent, prix: e.target.value })}
+                            placeholder="Prix"
+                        />
+                        <input
+                            type="text"
+                            value={editEventContent.inscrits}
+                            onChange={(e) => setEditEventContent({ ...editEventContent, inscrits: e.target.value })}
+                            placeholder="Nombre d'inscrits"
+                        />
+                        <input
+                            type="text"
+                            value={editEventContent.note}
+                            onChange={(e) => setEditEventContent({ ...editEventContent, note: e.target.value })}
+                            placeholder="Note"
+                        />
+                        <input
+                            type="text"
+                            value={editEventContent.adresseLien}
+                            onChange={(e) => setEditEventContent({ ...editEventContent, adresseLien: e.target.value })}
+                            placeholder="Lien Google Maps"
+                        />
+                        <div className="boutons">
+                            <Bouton
+                                texte="Enregistrer"
+                                className="btn-action"
+                                onClick={() => {
+                                    const updatedEvents = tabElementsEvenement.map(event =>
+                                        event.Titre === editEventContent.Titre ? editEventContent : event
+                                    );
+                                    setTabElementsEvenement(updatedEvents);
+                                    setIsEditingEvent(false); // Fermer la pop-up après enregistrement
+                                }}
+                            />
+                            <Bouton texte="Annuler" className="btn-action" onClick={() => setIsEditingEvent(false)} />
+                        </div>
+                    </>
+                </PopUp>
+            )}
+
+
+
+            {/* Pop-Up pour créer une newsletter */}
+            {isCreatingNews && (
+                <PopUp id="PopUp" className={"popup-visible"} setPopUp={() => setIsCreatingNews(false)}>
+                    <>
+                        <h2>Créer une News</h2>
+                        <input
+                            type="text"
+                            placeholder="Titre de la News"
+                            value={newNewsContent.Titre}
+                            onChange={(e) => setNewNewsContent({ ...newNewsContent, Titre: e.target.value })}
+                        />
+                        <textarea
+                            placeholder="Contenu de la News"
+                            value={newNewsContent.text}
+                            onChange={(e) => setNewNewsContent({ ...newNewsContent, text: e.target.value })}
+                        />
+                        <div className="boutons">
+                            <Bouton texte="Enregistrer" className="btn-action" onClick={() => {
+                                if (newNewsContent.Titre && newNewsContent.text) {
+                                    setTabElementsNewsletter([...tabElementsNewsletter, newNewsContent]);
+                                    setNewNewsContent({ Titre: "", text: "" });
+                                    setIsCreatingNews(false);
+                                } else {
+                                    alert("Veuillez remplir tous les champs.");
+                                }
+                            }} />
+                            <Bouton texte="Annuler" className="btn-action" onClick={() => {
+                                setNewNewsContent({ Titre: "", text: "" });
+                                setIsCreatingNews(false);
+                            }} />
+                        </div>
+                    </>
+                </PopUp>
+            )}
+
+            {popUp === "Events" && selectedElement && !isEditingEvent && (
                 <PopUp id={"PopUp"} className={popUp ? "popup-visible" : "cache"} setPopUp={setPopUp}>
-                    {popUp === "Events" ? (
-                        <>
-                            {selectedElement.Image && (
-                                <img
-                                    className={"popup-image"}
-                                    src={selectedElement.Image}
-                                    alt={selectedElement.Titre}
-                                />
-                            )}
-                            <p className={"title-text"}>{selectedElement.Titre}</p>
-                            <p className={"description-event"}>{selectedElement.description}</p>
-                            <p className={"infos-event"}>{"Date : " + selectedElement.date}</p>
-                            <p className="infos-event">
-                                Adresse : <span className="underline">{selectedElement.adresse}</span>
-                            </p>
-                            <p className={"infos-event"}>{"Prix de l'inscription : " + selectedElement.prix}</p>
-                            <div className={"btn-popup"}>
-                                <Bouton texte={"S'inscrire"} image={"/ressources/images/register.png"} className={"btn-action"} btnWidth={200} btnHeight={60} imageHeight={40} imageWidth={40}></Bouton>
-                            </div>
-                        </>
-                    ) : (
-                        <>
-                            <p className={"title-text"}>{selectedElement.Titre}</p>
-                            <p className={"description-text"}>{selectedElement.text}</p>
-                        </>
-                    )}
+                    <>
+                        {selectedElement.Image && (
+                            <img
+                                className={"popup-image"}
+                                src={selectedElement.Image}
+                                alt={selectedElement.Titre}
+                            />
+                        )}
+                        <p className={"title-text"}>{selectedElement.Titre}</p>
+                        <p className={"description-event"}>{selectedElement.description}</p>
+                        <p className={"infos-event"}>{"Date : " + selectedElement.date}</p>
+                        <p className="infos-event">
+                            Adresse : <span className="underline">{selectedElement.adresse}</span>
+                        </p>
+                        <p className={"infos-event"}>{"Prix de l'inscription : " + selectedElement.prix}</p>
+                        <div className={"btn-popup"}>
+                            {/* Bouton Modifier */}
+                            <Bouton
+                                texte={"Modifier"}
+                                className={"btn-action"}
+                                btnWidth={200}
+                                btnHeight={60}
+                                imageHeight={40}
+                                imageWidth={40}
+                                onClick={() => {
+                                    setIsEditingEvent(true);
+                                    setEditEventContent(selectedElement); // Charger les données actuelles dans le formulaire
+                                }}
+                            ></Bouton>
+                        </div>
+                    </>
                 </PopUp>
             )}
         </>
