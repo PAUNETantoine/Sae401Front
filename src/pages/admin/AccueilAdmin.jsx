@@ -4,9 +4,9 @@ import Carroussel from "../../composants/Carroussel";
 import Footer from "../../composants/Footer";
 import React, { useState } from "react";
 import PopUp from "../../composants/PopUp";
-import Bouton from "../../Bouton";
+import Bouton from "../../composants/Bouton";
 
-function Accueil() {
+function AccueilAdmin() {
     const [tabElementsEvenement, setTabElementsEvenement] = useState([
         {
             Titre: "Laser Game",
@@ -111,6 +111,11 @@ function Accueil() {
         <>
             <div>
                 <Header />
+                <div className="boutons-admin">
+                    <Bouton className="bouton-action"></Bouton>
+
+                </div>
+
                 <div className="carroussel-container-global">
                     <Carroussel
                         tabElementsEvenement={tabElementsEvenement}
@@ -165,4 +170,4 @@ function Accueil() {
     );
 }
 
-export default Accueil;
+export default AccueilAdmin;

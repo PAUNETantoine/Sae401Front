@@ -7,6 +7,7 @@ import Inscription from './pages/Inscription.jsx';
 import Boutique from "./pages/Boutique";
 import PageProduit from "./pages/PageProduit";
 import Compte from "./pages/Compte";
+import AccueilAdmin from "./pages/admin/AccueilAdmin";
 
 
 
@@ -23,6 +24,7 @@ function App()
             <Route path="/boutique" element={<Boutique />} />
             <Route path="/produit/:nom" element={<PageProduit />} />
             <Route path="/compte" element={<Compte />} />
+            <Route path="/accueil-admin" element={<AccueilAdmin />} />
         </Routes>
       </Router>
   );

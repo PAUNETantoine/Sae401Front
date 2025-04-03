@@ -46,11 +46,9 @@
 .ElementCarrousselEvent {
     position: absolute;
     transition: all 0.3s ease;
-    width: 500px;
-    height: 300px;
     background-size: cover;
     background-position: center;
-    color: white;
+    color: #F1FFFA;
     display: flex;
     justify-content: center;
     align-items: flex-end;
