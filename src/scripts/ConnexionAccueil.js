@@ -3,7 +3,7 @@ async function getEvenementActu()
 
     try {
         // Ajout des paramètres dans l'URL pour la requête GET
-        const url = `http://localhost:8000/events_list.php`;
+        const url = `http://localhost:8000/events.php`;
 
         const response = await fetch(url, {
             method: 'GET',
