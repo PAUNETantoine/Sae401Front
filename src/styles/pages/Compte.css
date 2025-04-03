@@ -12,7 +12,6 @@
     padding: 20px;
 }
 
-
 .compte-header {
     display: flex;
     align-items: center;
@@ -56,6 +55,14 @@
     width: 100%;
 }
 
+/* Aligner l'image modifier à côté du texte */
+.compte-info p,
+.compte-details p {
+    display: flex;
+    align-items: center; /* Align les éléments (texte et image) au centre */
+    margin: 10px 0; /* Ajouter un peu d'espace entre chaque ligne */
+}
+
 .bouton-souligner {
     text-decoration: underline;
     margin-top: 10px;
@@ -76,4 +83,9 @@
     height: 200px;
     width: 95%;
     overflow: auto;
+}
+
+.commande {
+    margin : 20px;
+    font-size: 24px;
 }

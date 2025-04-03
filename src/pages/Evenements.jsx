@@ -5,6 +5,8 @@ import React, {useEffect, useState} from "react";
 import "../styles/pages/Evenements.css"
 import Bouton from "../composants/Bouton";
 import PopUp from "../composants/PopUp";
+import {getEvenementActu} from "../scripts/ConnexionAccueil";
+import {getEvenements} from "../scripts/ConnexionEvenements";
 
 function Evenements()
 {
@@ -82,6 +84,17 @@ function Evenements()
 
         },
     ]);
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getEvenements();
+            console.log(data);
+        };
+
+        fetchData();
+    }, []);
+
 
     const [notificationsActives, setNotificationsActives] = useState(true);
     const [inscriptions, setInscriptions] = useState([tabElementsEvenement[0], tabElementsEvenement[3]]);

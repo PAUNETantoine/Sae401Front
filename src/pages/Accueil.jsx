@@ -2,42 +2,45 @@ import "../styles/pages/Accueil.css";
 import Header from "../composants/Header";
 import Carroussel from "../composants/Carroussel";
 import Footer from "../composants/Footer";
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import PopUp from "../composants/PopUp";
 import Bouton from "../composants/Bouton";
+import {getEvenementActu, getNewsLetter} from "../scripts/ConnexionAccueil";
 
-function Accueil() {
+function Accueil()
+{
     const [tabElementsEvenement, setTabElementsEvenement] = useState([
         {
             Titre: "Laser Game",
             Image: "/ressources/images/laserGame.webp",
             date: "25/04",
             description: "Laser Game au Havre en équipes de 8.",
-            adresse : "8 rue du laser game le Havre 76600",
-            prix : "15€",
-            inscrits : "10/25",
-            note : "",
-            adresseLien : "https://www.google.com/maps/place/Institut+universitaire+de+technologie+du+Havre/@49.5161141,0.1624614,17z/data=!4m14!1m7!3m6!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!2sInstitut+universitaire+de+technologie+du+Havre!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j!3m5!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoASAFQAw%3D%3D"
+            adresse: "8 rue du laser game le Havre 76600",
+            prix: "15€",
+            inscrits: "10/25",
+            note: "",
+            adresseLien: "https://www.google.com/maps/place/Institut+universitaire+de+technologie+du+Havre/@49.5161141,0.1624614,17z/data=!4m14!1m7!3m6!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!2sInstitut+universitaire+de+technologie+du+Havre!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j!3m5!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoASAFQAw%3D%3D"
         },
         {
             Titre: "Poker",
             Image: "/ressources/images/poker.jpg",
             date: "20/04",
             description: "Parties de poker avec cash price pour les gagnants.",
-            adresse : "28 rue du poker le Havre 76660",
-            prix : "2€",
-            inscrits : "8/12",
-            note : "4.5 / 5",
-            avis : [
+            adresse: "28 rue du poker le Havre 76660",
+            prix: "2€",
+            inscrits: "8/12",
+            note: "4.5 / 5",
+            avis: [
                 {
                     auteur: "Marilou",
-                    avis : "Très bonne partie"
+                    avis: "Très bonne partie"
                 },
                 {
                     auteur: "Antonin",
-                    avis : "c'était bien."
+                    avis: "c'était bien."
                 }
-            ],            adresseLien : "https://www.google.com/maps/place/Institut+universitaire+de+technologie+du+Havre/@49.5161141,0.1624614,17z/data=!4m14!1m7!3m6!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!2sInstitut+universitaire+de+technologie+du+Havre!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j!3m5!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoASAFQAw%3D%3D"
+            ],
+            adresseLien: "https://www.google.com/maps/place/Institut+universitaire+de+technologie+du+Havre/@49.5161141,0.1624614,17z/data=!4m14!1m7!3m6!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!2sInstitut+universitaire+de+technologie+du+Havre!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j!3m5!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoASAFQAw%3D%3D"
 
         },
         {
@@ -46,16 +49,16 @@ function Accueil() {
             date: "20/03",
             description: "Conference sur l'informatique et le développement durable.",
             adresse: "12 rue de l'iut Caucriauville 76620",
-            prix : "Gratuit",
-            inscrits : "25",
-            note : "3.9/5",
-            avis : [
+            prix: "Gratuit",
+            inscrits: "25",
+            note: "3.9/5",
+            avis: [
                 {
                     auteur: "Antoine",
-                    avis : "Vraiment pas ouf mais bon"
+                    avis: "Vraiment pas ouf mais bon"
                 }
             ],
-            adresseLien : "https://www.google.com/maps/place/Institut+universitaire+de+technologie+du+Havre/@49.5161141,0.1624614,17z/data=!4m14!1m7!3m6!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!2sInstitut+universitaire+de+technologie+du+Havre!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j!3m5!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoASAFQAw%3D%3D"
+            adresseLien: "https://www.google.com/maps/place/Institut+universitaire+de+technologie+du+Havre/@49.5161141,0.1624614,17z/data=!4m14!1m7!3m6!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!2sInstitut+universitaire+de+technologie+du+Havre!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j!3m5!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoASAFQAw%3D%3D"
 
         },
         {
@@ -64,10 +67,10 @@ function Accueil() {
             date: "25/08",
             description: "On engage des clowns pour faire les singes en publique venez voir le spectacle",
             adresse: "12 boulevard quoi feur 85468",
-            prix : "Gratuit",
-            inscrits : "42",
-            note : "",
-            adresseLien : "https://www.google.com/maps/place/Institut+universitaire+de+technologie+du+Havre/@49.5161141,0.1624614,17z/data=!4m14!1m7!3m6!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!2sInstitut+universitaire+de+technologie+du+Havre!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j!3m5!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoASAFQAw%3D%3D"
+            prix: "Gratuit",
+            inscrits: "42",
+            note: "",
+            adresseLien: "https://www.google.com/maps/place/Institut+universitaire+de+technologie+du+Havre/@49.5161141,0.1624614,17z/data=!4m14!1m7!3m6!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!2sInstitut+universitaire+de+technologie+du+Havre!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j!3m5!1s0x47e02f019ca4d7e9:0x61d111d0074aa91f!8m2!3d49.5161141!4d0.1624614!16s%2Fg%2F122qxy1j?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoASAFQAw%3D%3D"
 
         },
     ]);
@@ -98,6 +101,17 @@ function Accueil() {
         },
     ]);
 
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getEvenementActu();
+            console.log(data);
+        };
+
+        fetchData();
+    }, []);
+
+
     const [popUp, setPopUp] = useState(null); // "Events" ou "Newsletter"
     const [selectedElement, setSelectedElement] = useState(null);
 
@@ -110,7 +124,7 @@ function Accueil() {
     return (
         <>
             <div>
-                <Header />
+                <Header/>
                 <div className="carroussel-container-global">
                     <Carroussel
                         tabElementsEvenement={tabElementsEvenement}
@@ -128,7 +142,7 @@ function Accueil() {
                     />
                 </div>
 
-                <Footer />
+                <Footer/>
             </div>
 
             {popUp && selectedElement && (
@@ -150,7 +164,9 @@ function Accueil() {
                             </p>
                             <p className={"infos-event"}>{"Prix de l'inscription : " + selectedElement.prix}</p>
                             <div className={"btn-popup"}>
-                                <Bouton texte={"S'inscrire"} image={"/ressources/images/register.png"} className={"btn-action"} btnWidth={200} btnHeight={60} imageHeight={40} imageWidth={40}></Bouton>
+                                <Bouton texte={"S'inscrire"} image={"/ressources/images/register.png"}
+                                        className={"btn-action"} btnWidth={200} btnHeight={60} imageHeight={40}
+                                        imageWidth={40}></Bouton>
                             </div>
                         </>
                     ) : (

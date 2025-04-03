@@ -6,6 +6,8 @@ import "../styles/pages/Boutique.css"
 import PopUp from "../composants/PopUp";
 import Bouton from "../composants/Bouton";
 import emailjs from "emailjs-com";
+import {getEvenementActu} from "../scripts/ConnexionAccueil";
+import {getBoutique} from "../scripts/ConnexionBoutique";
 
 
 function Boutique()
@@ -55,6 +57,18 @@ function Boutique()
             quantite : 14
         },
     ]);
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getBoutique();
+            console.log(data);
+        };
+
+        fetchData();
+    }, []);
+
+
 
     const [panier, setPanier] = useState([tabProduitsBoutique[1], tabProduitsBoutique[1], tabProduitsBoutique[0], tabProduitsBoutique[4]]);
     const [popUp, setPopUp] = useState(false)

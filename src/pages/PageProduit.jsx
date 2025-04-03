@@ -98,7 +98,7 @@ function PageProduit()
                         </div>
                         <div className="PageProduit-bottom">
                             <p className="prix-produit">{produit.prix}€</p>
-                            <Bouton className="btn-action" texte="Ajouter au panier" image="/ressources/images/panier.png" />
+                            <Bouton className="btn-action" texte="Ajouter au panier" image="/ressources/images/panier.png" imageWidth={70} imageHeight={70} />
                         </div>
                     </div>
                 </div>

@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Bouton from "../composants/Bouton";
 import Header from "../composants/Header";
 import Footer from "../composants/Footer";
 import "../styles/pages/Compte.css"
+import {getInfosCompte} from "../scripts/ConnexionCompte";
 
 function Compte()
 {
@@ -13,6 +14,16 @@ function Compte()
         motDePasse : "toSkibidiOrNot",
         notifications : true
     });
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getInfosCompte();
+            console.log(data);
+        };
+
+        fetchData();
+    }, []);
 
 
     return (
@@ -42,14 +53,18 @@ function Compte()
                 </div>
 
                 <div className="compte-details">
-                    <p><strong>Mail : </strong>{compte.email}</p>
-                    <p><strong>Mot de passe : </strong>{compte.motDePasse}</p>
+                    <p><strong>Mail : </strong> {compte.email}</p>
                     <Bouton texte="Changer le mot de passe" className="bouton-souligner" />
                 </div>
 
                 <p className="titre-historique-souligner">Historique des commandes :</p>
                 <div className="historique-commandes">
-                    {/* Historique des commandes ici */}
+                    <div className={"commande"}>
+                        <strong>Commande numéro 112 : </strong>
+                        <p>> Sweat Blanc : 2 </p>
+                        <p>> Sweat noir : 1 </p>
+                        <p>> Casquette BDE : 2 </p>
+                    </div>
                 </div>
             </div>
 

@@ -1,6 +1,8 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import Bouton from "./Bouton";
 import "../styles/composants/FormulaireInscription.css";
+import {getInfosCompte} from "../scripts/ConnexionCompte";
+import {envoyerInscription} from "../scripts/ConnexionInscription";
 
 function FormulaireInscription() {
     const [nom, setNom] = useState("");
@@ -16,6 +18,14 @@ function FormulaireInscription() {
             alert("Les mots de passe ne correspondent pas !");
             return;
         }
+
+
+        const fetchData = async () => {
+                const data = await envoyerInscription({nom:nom, prenom:prenom, email:email, password:password});
+                console.log(data);
+        };
+        fetchData();
+
 
         alert(`Nom: ${nom}\nPrénom: ${prenom}\nEmail: ${email}\nMot de passe: ${password}`);
     };
