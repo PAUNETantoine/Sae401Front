@@ -121,6 +121,18 @@ function AccueilAdmin() {
     const [isEditingEvent, setIsEditingEvent] = useState(false);
     const [editEventContent, setEditEventContent] = useState(null);
 
+    //HANDLER DE SUPPRESSION NEWSLETTER
+    const handleDeleteNewsletter = (elementToDelete) => {
+        setTabElementsNewsletter(tabElementsNewsletter.filter(news => news.Titre !== elementToDelete.Titre));
+        closePopUp();
+    };
+
+    //HANDLER DE SUPPRESSION EVENEMENT
+    const handleDeleteEvent = (elementToDelete) => {
+        setTabElementsEvenement(tabElementsEvenement.filter(event => event.Titre !== elementToDelete.Titre));
+        closePopUp();
+    };
+
     const showPopUp = (type, element) => {
         setPopUp(type);
         setSelectedElement(element);
@@ -175,6 +187,7 @@ function AccueilAdmin() {
                                 setIsEditingNews(true);
                                 setEditContent(selectedElement);
                             }} />
+                            <Bouton texte="Supprimer" className="btn-action" onClick={() => handleDeleteNewsletter(selectedElement)} />
                         </div>
                     </>
                 </PopUp>
@@ -433,19 +446,11 @@ function AccueilAdmin() {
                         </p>
                         <p className={"infos-event"}>{"Prix de l'inscription : " + selectedElement.prix}</p>
                         <div className={"btn-popup"}>
-                            {/* Bouton Modifier */}
-                            <Bouton
-                                texte={"Modifier"}
-                                className={"btn-action"}
-                                btnWidth={200}
-                                btnHeight={60}
-                                imageHeight={40}
-                                imageWidth={40}
-                                onClick={() => {
-                                    setIsEditingEvent(true);
-                                    setEditEventContent(selectedElement); // Charger les données actuelles dans le formulaire
-                                }}
-                            ></Bouton>
+                            <Bouton texte="Modifier" className="btn-action" onClick={() => {
+                                setIsEditingEvent(true);
+                                setEditEventContent(selectedElement);
+                            }} />
+                            <Bouton texte="Supprimer" className="btn-action" onClick={() => handleDeleteEvent(selectedElement)} />
                         </div>
                     </>
                 </PopUp>

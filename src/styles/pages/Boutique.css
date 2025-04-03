@@ -61,3 +61,12 @@
     right: 42%;
     bottom: 5%;
 }
+
+.btns-modif {
+    margin-top: 20px;
+    margin-left: 25px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center; /* Centre le bouton horizontalement */
+    align-items: center; /* Centre le bouton verticalement */
+}

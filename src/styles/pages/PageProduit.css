@@ -99,3 +99,6 @@
     left: 80px; /* Décale le prix vers la gauche */
 }
 
+.erreur {
+    margin-top: 500px;
+}

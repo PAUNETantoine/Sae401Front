@@ -4,15 +4,15 @@ import Bouton from "./Bouton";
 function PopUp({ id, className, setPopUp, children }) {
 
     const handleClose = () => {
-        setPopUp(null); // Met à jour l'état pour fermer la popup
+        setPopUp(null); // Updates the state to close the popup
     };
 
     return (
         <div id={id} className={className === "cache" ? "popup-hidden" : "popup-visible"}>
-            {/* Superposition floutée */}
+            {/* Blurred overlay */}
             <div className="popup-overlay" onClick={handleClose}></div>
 
-            {/* Contenu de la pop-up */}
+            {/* Pop-up content */}
             <div className="popup-container">
                 <Bouton
                     image={"/ressources/images/closeBtn.png"}
@@ -23,10 +23,11 @@ function PopUp({ id, className, setPopUp, children }) {
                     btnHeight={60}
                     btnWidth={60}
                 />
-                {children} {/* Contenu de la popup, qu'il soit un événement ou une newsletter */}
+                {children} {/* Popup content, whether it's an event or a newsletter */}
             </div>
         </div>
     );
 }
 
 export default PopUp;
+
