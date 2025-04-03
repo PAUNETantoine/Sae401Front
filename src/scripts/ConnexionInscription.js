@@ -23,7 +23,6 @@ export async function envoyerInscription(infoConnexion) {
         }
 
     } catch (err) {
-        alert('Erreur serveur');
+        //alert('Erreur serveur');
     }
-
 }

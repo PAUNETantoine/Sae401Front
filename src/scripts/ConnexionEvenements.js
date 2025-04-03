@@ -22,6 +22,6 @@ export async function getEvenements()
             alert(data.error);
         }
     } catch (err) {
-        alert('Erreur serveur');
+        //alert('Erreur serveur');
     }
 }

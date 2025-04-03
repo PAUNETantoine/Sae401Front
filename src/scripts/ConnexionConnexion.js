@@ -21,7 +21,7 @@ export async function envoyerConnexion(infoConnexion) {
         }
 
     } catch (err) {
-        alert('Erreur serveur');
+        //alert('Erreur serveur');
     }
 
 }
